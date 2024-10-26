@@ -1,0 +1,27 @@
+# ninja log v6
+35	206	7516883214221901	C:/Users/allan/Documents/GitHub/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Death-and-reincarnation_autogen/mocs_compilation.cpp	c2b94b6dbed2f6b2
+35	206	7516883214221901	Death-and-reincarnation_autogen/timestamp	c2b94b6dbed2f6b2
+35	206	7516883214221901	Death-and-reincarnation_autogen/mocs_compilation.cpp	c2b94b6dbed2f6b2
+167	1314	7516873144152055	CMakeFiles/Death-and-reincarnation.dir/src/cpp/person.cpp.obj	85d62e1827c7e99f
+35	206	7516883214221901	C:/Users/allan/Documents/GitHub/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Death-and-reincarnation_autogen/timestamp	c2b94b6dbed2f6b2
+686	856	7516859067959491	CMakeFiles/Death-and-reincarnation.dir/src/cpp/graveyard.cpp.obj	d9fe34e5e5fde473
+669	2050	7516859067789082	CMakeFiles/Death-and-reincarnation.dir/src/cpp/world.cpp.obj	46ccc583df222f5c
+203	1627	7516882602248152	CMakeFiles/Death-and-reincarnation.dir/src/cpp/humanity.cpp.obj	41531980122a0ca8
+651	2656	7516859067615348	CMakeFiles/Death-and-reincarnation.dir/Death-and-reincarnation_autogen/mocs_compilation.cpp.obj	30150226214072d3
+212	2135	7516883215984651	CMakeFiles/Death-and-reincarnation.dir/mainwindow.cpp.obj	501b0e26200a613
+207	2107	7516883215933354	CMakeFiles/Death-and-reincarnation.dir/main.cpp.obj	f5c3472eea5e9d59
+2135	2334	7516883235217532	Death-and-reincarnation.exe	6ce15a560e36a747
+36	189	7516883946990322	Death-and-reincarnation_autogen/timestamp	c2b94b6dbed2f6b2
+36	189	7516883946990322	Death-and-reincarnation_autogen/mocs_compilation.cpp	c2b94b6dbed2f6b2
+36	189	7516883946990322	C:/Users/allan/Documents/GitHub/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Death-and-reincarnation_autogen/timestamp	c2b94b6dbed2f6b2
+36	189	7516883946990322	C:/Users/allan/Documents/GitHub/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Death-and-reincarnation_autogen/mocs_compilation.cpp	c2b94b6dbed2f6b2
+194	2075	7516883948573675	CMakeFiles/Death-and-reincarnation.dir/mainwindow.cpp.obj	501b0e26200a613
+190	2099	7516883948527961	CMakeFiles/Death-and-reincarnation.dir/main.cpp.obj	f5c3472eea5e9d59
+2099	2303	7516883967617549	Death-and-reincarnation.exe	6ce15a560e36a747
+33	184	7516884964594477	Death-and-reincarnation_autogen/timestamp	c2b94b6dbed2f6b2
+33	184	7516884964594477	Death-and-reincarnation_autogen/mocs_compilation.cpp	c2b94b6dbed2f6b2
+33	184	7516884964594477	C:/Users/allan/Documents/GitHub/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Death-and-reincarnation_autogen/timestamp	c2b94b6dbed2f6b2
+33	184	7516884964594477	C:/Users/allan/Documents/GitHub/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/Death-and-reincarnation_autogen/mocs_compilation.cpp	c2b94b6dbed2f6b2
+189	1598	7516884966164501	CMakeFiles/Death-and-reincarnation.dir/src/cpp/humanity.cpp.obj	41531980122a0ca8
+185	1972	7516884966118790	CMakeFiles/Death-and-reincarnation.dir/mainwindow.cpp.obj	501b0e26200a613
+1973	2169	7516884983992741	Death-and-reincarnation.exe	6ce15a560e36a747

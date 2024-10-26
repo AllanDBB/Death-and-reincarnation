@@ -10,7 +10,7 @@ struct Person {
     Person* rightPerson;
 
     int id;
-    int sins[7];
+    int sins[7] = {0,0,0,0,0,0,0};
 
     QString firstName;
     QString lastName;

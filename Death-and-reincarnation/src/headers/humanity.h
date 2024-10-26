@@ -11,7 +11,7 @@ struct Humanity{
     int length;
 
     Humanity();
-    void add(Person*);
+    void add(Person*, Person*, bool);
     Person* remove();
     void sort();
     Person* find(int, Person*, bool);
