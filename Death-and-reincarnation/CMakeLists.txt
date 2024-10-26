@@ -17,12 +17,27 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        ./src/headers/person.h
+        ./src/headers/humanity.h
+        ./src/headers/world.h
+        ./src/cpp/world.cpp
+        ./src/cpp/person.cpp
+        ./src/cpp/humanity.cpp
+        ./src/cpp/graveyard.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Death-and-reincarnation
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        ./src/headers/person.h
+        src/headers/humanity.h
+        src/headers/world.h
+        src/headers/graveyard.h
+        src/cpp/world.cpp
+        src/cpp/person.cpp
+        src/cpp/humanity.cpp
+        src/cpp/graveyard.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Death-and-reincarnation APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
