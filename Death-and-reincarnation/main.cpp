@@ -38,15 +38,15 @@ int main(int argc, char *argv[])
     person1->sins[0] = 7;
     person2->sins[0] = 5;
     person3->sins[0] = 6;
-    person4->sins[0] = 9;
+    person4->sins[0] = 8;
 
     person1->sins[1] = 1;
     person2->sins[1] = 5;
-    person3->sins[1] = 9;
+    person3->sins[1] = 3;
     person4->sins[1] = 3;
 
-    person1->sins[2] = 90;
-    person2->sins[2] = 10;
+    person1->sins[2] = 5;
+    person2->sins[2] = 0;
     person3->sins[2] = 4;
     person4->sins[2] = 2;
 
@@ -67,14 +67,14 @@ int main(int argc, char *argv[])
     qDebug() << "First Person:" << (sortedList.first()->firstName);
     qDebug() << "Last Person:" << (sortedList.last()->firstName);
 
-    graveyard.remove(1);
+    //graveyard.remove(1);
     qDebug() << graveyard.firstPerson->firstName;
     qDebug() << graveyard.firstPerson->rightPerson->firstName;
     qDebug() << graveyard.lastPerson->firstName;
 
     qDebug() << graveyard.find(2)->firstName;
 
-    graveyard.showHeap(sortedList, ALL);
+    graveyard.showHeap(ALL);
 
     QApplication a(argc, argv);
     MainWindow w;

@@ -4,6 +4,17 @@
 #include <QString>
 #include <QVector>
 
+enum SinType {
+    LUST = 0,
+    GLUTTONY = 1,
+    GREED = 2,
+    SLOTH = 3,
+    WRATH = 4,
+    ENVY = 5,
+    PRIDE = 6,
+    ALL = 7,
+    };
+
 struct Person {
 
     Person* leftPerson;

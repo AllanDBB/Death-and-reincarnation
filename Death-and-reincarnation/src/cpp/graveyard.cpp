@@ -1,8 +1,9 @@
 #include "../../src/headers/graveyard.h"
-#include <iostream>
+#include <algorithm>
 #include <cmath>
 #include <QVector>
 #include <QDebug>
+#include <iomanip>
 
 
 Graveyard::Graveyard(){
@@ -109,11 +110,78 @@ Person* Graveyard::find(int id){
     return temp;
 };
 
-void Graveyard::showHeap(QVector<Person*> sortedList, SinType sin) { //problema para despues
+
+void heapify(QVector<Person*> arr, int n, int i, SinType sintype) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (sintype == 7){
+        if (left < n && arr[left]->getSinSum() > arr[largest]->getSinSum()) {
+            largest = left;
+        }
+
+
+        if (right < n && arr[right]->getSinSum() > arr[largest]->getSinSum()) {
+            largest = right;
+        }
+    } else{
+
+    if (left < n && arr[left]->sins[sintype] > arr[largest]->sins[sintype]) {
+        largest = left;
+    }
+
+
+    if (right < n && arr[right]->sins[sintype] > arr[largest]->sins[sintype]) {
+        largest = right;
+    }}
+
+
+    if (largest != i) {
+        std::swap(arr[i], arr[largest]);
+        heapify(arr, n, largest, sintype);
+    }
 }
 
 
-Person* Graveyard::killByHeap(int levels){
+void buildMaxHeap(QVector<Person*> arr, SinType sintype) {
+    int n = arr.size();
 
+
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        heapify(arr, n, i, sintype);
+    }
 }
+
+void printHeapAsTree(QVector<Person*>& arr, SinType sintype ) {
+    int n = arr.size();
+    int levels = std::log2(n) + 1;
+
+    int maxWidth = std::pow(2, levels) * 2;
+
+    int index = 0;
+    for (int i = 0; i < levels; i++) {
+        int levelNodes = std::pow(2, i);
+        int spaceBetween = maxWidth / (levelNodes + 1);
+
+        QString levelStr;
+        levelStr = QString(" ").repeated(spaceBetween / 2);
+
+
+        for (int j = 0; j < levelNodes && index < n; j++, index++) {
+            if (sintype == 7){
+                levelStr += QString("%1").arg(QString :: number(arr[index]->getSinSum()), spaceBetween);
+            } else{
+                levelStr += QString("%1").arg(QString :: number(arr[index]->sins[sintype]), spaceBetween);}
+        }
+        qDebug().noquote() << levelStr;
+    }
+}
+
+void Graveyard::showHeap(SinType sin) {
+    QVector<Person*> sortedList = sort(sin);
+    buildMaxHeap(sortedList, sin);
+    printHeapAsTree(sortedList,sin);}
+
+
 
