@@ -16,9 +16,6 @@ struct Graveyard{
     QVector<Person*> sort(SinType);
     Person* remove(int);
     Person* find(int);
-    void showHeap(SinType);
-    Person* killByHeap(int);
-    Person* killRandom();
-    Person* killSpecific(int);
+
 };
 #endif // GRAVEYARD_H
