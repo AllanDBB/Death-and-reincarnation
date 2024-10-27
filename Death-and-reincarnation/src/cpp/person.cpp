@@ -13,3 +13,11 @@ Person::Person(int _id, QString _firstName, QString _lastName, QString _country,
     leftPerson = nullptr;
     rightPerson = nullptr;
 }
+
+int Person::getSinSum(){
+    int sum = 0;
+    for (int i = 0; i < 7; ++i) {
+        sum += sins[i];
+    }
+    return sum;
+}

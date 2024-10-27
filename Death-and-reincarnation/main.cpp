@@ -5,6 +5,7 @@
 
 #include "src/headers/person.h"
 #include "src/headers/humanity.h"
+#include "src/headers/graveyard.h"
 
 int main(int argc, char *argv[])
 {
@@ -22,7 +23,59 @@ int main(int argc, char *argv[])
     qDebug() << humanity.firstPerson->firstName;
     qDebug() << humanity.lastPerson->firstName;
     qDebug() << humanity.lastPerson->leftPerson->firstName;
-    qDebug() << humanity.firstPerson->rightPerson->rightPerson->firstName;
+    qDebug() << humanity.firstPerson->rightPerson->firstName;
+
+    humanity.remove(person3, person4, 0);
+
+    qDebug() << humanity.firstPerson->firstName;
+    qDebug() << humanity.lastPerson->firstName;
+    qDebug() << humanity.lastPerson->leftPerson->firstName;
+    qDebug() << humanity.firstPerson->rightPerson->firstName;
+
+    qDebug() << humanity.find(3,person2,1)->firstName;
+    //qDebug() << humanity.find(2,person2,1)->firstName; se cae pq lo quite entonces hopefully funciona
+
+    person1->sins[0] = 7;
+    person2->sins[0] = 5;
+    person3->sins[0] = 6;
+    person4->sins[0] = 9;
+
+    person1->sins[1] = 1;
+    person2->sins[1] = 5;
+    person3->sins[1] = 9;
+    person4->sins[1] = 3;
+
+    person1->sins[2] = 90;
+    person2->sins[2] = 10;
+    person3->sins[2] = 4;
+    person4->sins[2] = 2;
+
+    Graveyard graveyard = Graveyard();
+    graveyard.add(person3);
+    graveyard.add(person1);
+    graveyard.add(person2);
+    graveyard.add(person4);
+
+    qDebug() << "---------";
+    qDebug() << graveyard.firstPerson->firstName;
+    qDebug() << graveyard.firstPerson->rightPerson->firstName;
+    qDebug() << graveyard.lastPerson->leftPerson->firstName;
+    qDebug() << graveyard.lastPerson->firstName;
+
+    qDebug() << "---------";
+    QVector<Person*> sortedList = graveyard.sort(ALL);
+    qDebug() << "First Person:" << (sortedList.first()->firstName);
+    qDebug() << "Last Person:" << (sortedList.last()->firstName);
+
+    graveyard.remove(1);
+    qDebug() << graveyard.firstPerson->firstName;
+    qDebug() << graveyard.firstPerson->rightPerson->firstName;
+    qDebug() << graveyard.lastPerson->firstName;
+
+    qDebug() << graveyard.find(2)->firstName;
+
+    graveyard.showHeap(sortedList, ALL);
+
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

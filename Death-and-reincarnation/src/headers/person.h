@@ -25,6 +25,7 @@ struct Person {
     bool condition;
 
     Person(int, QString, QString, QString, QString, QString, QString);
+    int getSinSum ();
 
 };
 
