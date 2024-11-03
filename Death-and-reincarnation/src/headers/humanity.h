@@ -12,11 +12,11 @@ struct Humanity{
 
     Humanity();
     void add(Person*, Person*, bool);
-    Person* remove(Person*, Person*, bool);
+    Person* remove(int, Person*, bool);
     QVector<Person*> sort(SinType); //?
     Person* find(int, Person*, bool);
     void showHeap(SinType);
-    Person* killByHeap(int);
+    QVector <Person*> killByHeap(int, SinType);
     Person* killRandom();
     Person* killSpecific(int);
 

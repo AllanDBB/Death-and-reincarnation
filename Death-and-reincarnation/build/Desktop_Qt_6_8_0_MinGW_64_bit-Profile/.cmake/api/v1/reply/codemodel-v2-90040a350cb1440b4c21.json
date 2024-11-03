@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-RelWithDebInfo-16c3cee55775673130b6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Death-and-reincarnation",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Death-and-reincarnation::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Death-and-reincarnation-RelWithDebInfo-3ea7187fa178d8ff520b.json",
+					"name" : "Death-and-reincarnation",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Death-and-reincarnation_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Death-and-reincarnation_autogen-RelWithDebInfo-6503ac9cb8e766b77036.json",
+					"name" : "Death-and-reincarnation_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Death-and-reincarnation_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Death-and-reincarnation_autogen_timestamp_deps-RelWithDebInfo-066f8c61f37bcde41aee.json",
+					"name" : "Death-and-reincarnation_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Profile",
+		"source" : "C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

@@ -4,6 +4,15 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+struct TreeNode {
+    Person* person;
+    TreeNode* left;
+    TreeNode* right;
+
+
+    TreeNode(Person* p) : person(p), left(nullptr), right(nullptr) {}
+};
+
 struct World{
 
     Humanity* humanity;
@@ -11,13 +20,11 @@ struct World{
     int length;
 
     World(Humanity*, Graveyard*);
-    void generate();
-    Person search(int id);
-    int getFreeId();
-    void add(Person);
-    void remove(int id);
-
-
+    TreeNode * generate();
+    Person* search(int id);
+    int getFreeId(); //todo
+    void add(Person*);
+    Person* remove(int id);
 
 };
 #endif // WORLD_H

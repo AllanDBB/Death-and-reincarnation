@@ -1,0 +1,9 @@
+C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Profile/CMakeFiles/Death-and-reincarnation.dir
+C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Profile/CMakeFiles/edit_cache.dir
+C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Profile/CMakeFiles/rebuild_cache.dir
+C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Profile/CMakeFiles/list_install_components.dir
+C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Profile/CMakeFiles/install.dir
+C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Profile/CMakeFiles/install/local.dir
+C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Profile/CMakeFiles/install/strip.dir
+C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Profile/CMakeFiles/Death-and-reincarnation_autogen_timestamp_deps.dir
+C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/build/Desktop_Qt_6_8_0_MinGW_64_bit-Profile/CMakeFiles/Death-and-reincarnation_autogen.dir

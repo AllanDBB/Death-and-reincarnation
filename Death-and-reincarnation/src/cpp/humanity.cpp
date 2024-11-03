@@ -1,5 +1,7 @@
 #include "../../src/headers/humanity.h"
 #include <QDebug>
+#include <QRandomGenerator>
+#include "../../src/headers/graveyard.h"
 
 Humanity::Humanity() {
     length = 0;
@@ -52,22 +54,22 @@ void Humanity::add(Person* person, Person* origin, bool direction) {
     length++;
 }
 
-Person* Humanity::remove(Person* person, Person* origin, bool direction) {
+Person* Humanity::remove(int id, Person* origin, bool direction) {
     if (length == 0) return nullptr;
 
     Person *temp = origin;
 
     if (direction) {
-        while (temp != nullptr && person->id != temp->id) {
+        while (temp != nullptr && id != temp->id) {
             temp = temp->rightPerson;
         }
     } else {
-        while (temp != nullptr && person->id != temp->id) {
+        while (temp != nullptr && id != temp->id) {
             temp = temp->leftPerson;
         }
     }
 
-    if (temp == nullptr || temp->id != person->id) return nullptr;
+    if (temp == nullptr || temp->id != id) return nullptr;
 
     if (temp->leftPerson != nullptr) {
         temp->leftPerson->rightPerson = temp->rightPerson;
@@ -89,22 +91,61 @@ Person* Humanity::remove(Person* person, Person* origin, bool direction) {
     return temp;
 }
 
-Person* Humanity::find(int id, Person* origin, bool direction){
+Person* Humanity::find(int id, Person* origin, bool direction) {
+    qDebug() << "entrar apenas";
     if (length == 0) return nullptr;
 
-    Person * temp = origin;
-    if (direction){
-        while (id != temp->id && temp!=nullptr){
+    Person *temp = origin;
+
+    if (direction) {
+        qDebug() << "si direccion";
+        while (temp != nullptr && id != temp->id) {
             temp = temp->rightPerson;
         }
-    }
-    else{
-        while (id != temp->id && temp!=nullptr){
+    } else {
+        qDebug() << "no direccion ";
+        while (temp != nullptr && id != temp->id) {
             temp = temp->leftPerson;
         }
     }
+
+    if (temp != nullptr) {
+        qDebug() << "es algo";
+    } else {
+        qDebug() << "es nulo";
+    }
+
     return temp;
-};
+}
+
+
+QVector<Person*> Humanity::sort(SinType sinType) {
+    QVector<Person*> sortedPersons;
+    Person* current = firstPerson;
+
+    while (current != nullptr) {
+        sortedPersons.push_back(current);
+        current = current->rightPerson;
+    }
+
+    auto comparator = [sinType](Person* a, Person* b) {
+        switch (sinType) {
+        case GREED: return a->sins[2] > b->sins[2];
+        case ENVY: return a->sins[5] > b->sins[5];
+        case SLOTH: return a->sins[3] > b->sins[3];
+        case LUST: return a->sins[0] > b->sins[0];
+        case PRIDE: return a->sins[6] > b->sins[6];
+        case GLUTTONY: return a->sins[1] > b->sins[1];
+        case WRATH: return a->sins[4] > b->sins[4];
+        case ALL: return a->getSinSum() > b->getSinSum();
+        default: return false;
+        }
+    };
+
+    std::sort(sortedPersons.begin(), sortedPersons.end(), comparator);
+
+    return sortedPersons;
+}
 
 
 void heapify(QVector<Person*> arr, int n, int i, SinType sintype) {
@@ -178,4 +219,111 @@ void Humanity::showHeap(SinType sin) {
     QVector<Person*> sortedList = sort(sin);
     buildMaxHeap(sortedList, sin);
     printHeapAsTree(sortedList,sin);}
+
+QVector <Person*> Humanity::killByHeap(int levels, SinType sinType){
+    QVector<Person*> sortedList = sort(sinType);
+    buildMaxHeap(sortedList, sinType);
+
+    int toDelete = pow(2,levels)-1;
+    QVector <Person*> killed;
+
+    if (toDelete>length){
+        return killed;
+    }
+
+
+    while (toDelete>0){
+        Person * temp = (Person*) sortedList.front();
+        sortedList.pop_front();
+        remove(temp->id,firstPerson,1); //idk para muchos
+        killed.append(temp);
+        toDelete--;
+    };
+
+    return killed;
+
+}
+
+Person* Humanity::killRandom() {
+    if (length <= 0) return nullptr;
+
+    int randomValue = QRandomGenerator::global()->bounded(length);
+    Person* temp = firstPerson;
+
+
+    if (randomValue == 0) {
+        firstPerson = temp->rightPerson;
+        if (firstPerson != nullptr) {
+            firstPerson->leftPerson = nullptr;
+        } else {
+            lastPerson = nullptr;
+        }
+        length--;
+        return temp;
+    }
+
+
+    if (randomValue == length - 1) {
+        temp = lastPerson;
+        lastPerson = temp->leftPerson;
+
+        if (lastPerson != nullptr) {
+            lastPerson->rightPerson = nullptr;
+        } else {
+            firstPerson = nullptr;
+        }
+        length--;
+        return temp;
+    }
+
+
+    for (int i = 0; i < randomValue; ++i) {
+        temp = temp->rightPerson;
+    }
+
+
+    if (temp->leftPerson != nullptr) {
+        temp->leftPerson->rightPerson = temp->rightPerson;
+    }
+    if (temp->rightPerson != nullptr) {
+        temp->rightPerson->leftPerson = temp->leftPerson;
+    }
+
+
+    if (temp == lastPerson) {
+        lastPerson = temp->leftPerson;
+    }
+    if (temp == firstPerson) {
+        firstPerson = temp->rightPerson;
+    }
+
+    length--;
+    return temp;
+}
+
+
+Person* Humanity::killSpecific(int id){ //acoplarlo al arbol
+
+    Person *toKill = find(id, firstPerson, 1);
+
+
+
+    if (toKill == nullptr) {
+
+        return nullptr;
+    }
+
+
+    Person *removedPerson = remove(toKill->id, firstPerson, 1);
+
+
+
+    if (removedPerson != nullptr) {
+
+        return removedPerson;
+    }
+
+
+    return nullptr;
+}
 

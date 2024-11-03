@@ -40,33 +40,7 @@ void Graveyard::add(Person* person) {
     length++;
 }
 
-QVector<Person*> Graveyard::sort(SinType sinType) {
-    QVector<Person*> sortedPersons;
-    Person* current = firstPerson;
 
-    while (current != nullptr) {
-        sortedPersons.push_back(current);
-        current = current->rightPerson;
-    }
-
-    auto comparator = [sinType](Person* a, Person* b) {
-        switch (sinType) {
-        case GREED: return a->sins[2] > b->sins[2];
-        case ENVY: return a->sins[5] > b->sins[5];
-        case SLOTH: return a->sins[3] > b->sins[3];
-        case LUST: return a->sins[0] > b->sins[0];
-        case PRIDE: return a->sins[6] > b->sins[6];
-        case GLUTTONY: return a->sins[1] > b->sins[1];
-        case WRATH: return a->sins[4] > b->sins[4];
-        case ALL: return a->getSinSum() > b->getSinSum();
-        default: return false;
-        }
-    };
-
-    std::sort(sortedPersons.begin(), sortedPersons.end(), comparator);
-
-    return sortedPersons;
-}
 
 Person* Graveyard::remove(int id) {
     if (length == 0) return nullptr;
