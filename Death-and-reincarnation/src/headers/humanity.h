@@ -17,8 +17,10 @@ struct Humanity{
     Person* find(int, Person*, bool);
     void showHeap(SinType);
     QVector <Person*> killByHeap(int, SinType);
-    Person* killRandom();
+    QVector<Person*> killRandom(int);
     Person* killSpecific(int);
-
+    Person * createPerson(int, int, int, int, int);
+    int getRandomId();
+    Person * resurrect(Person * person);
 };
 #endif // HUMANITY_H

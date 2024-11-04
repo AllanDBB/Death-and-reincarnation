@@ -2,11 +2,107 @@
 #include <QDebug>
 #include <QRandomGenerator>
 #include "../../src/headers/graveyard.h"
+#include <QCoreApplication>
+#include <QFile>
+#include <QTextStream>
+#include <QStringList>
+#include <QRandomGenerator>
+#include <QDebug>
+#include <QDateTime>
 
 Humanity::Humanity() {
     length = 0;
     firstPerson = nullptr;
     lastPerson = nullptr;
+}
+
+QString readRandomLine(const QString& filename, int quantity) {
+    QFile file(filename);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qWarning() << "Error al abrir el archivo:" << filename;
+        return QString();
+    }
+
+    QStringList lines;
+    QTextStream in(&file);
+
+    // Lee todas las líneas del archivo y las almacena en un QStringList
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        lines.append(line);
+    }
+    file.close();
+
+    if (lines.isEmpty()) {
+        qWarning() << "El archivo está vacío.";
+        return QString();
+    }
+
+    // Genera un índice aleatorio
+    int randomIndex = QRandomGenerator::global()->bounded(quantity);
+
+    return lines[randomIndex]; // Devuelve la línea aleatoria
+}
+
+int Humanity::getRandomId(){
+    int random = QRandomGenerator::global()->bounded(1000000);
+    while (find(random, firstPerson,1)!=nullptr){
+        random = QRandomGenerator::global()->bounded(1000000);
+    }
+    return random;
+}
+
+Person * Humanity::createPerson(int name, int lastName, int religion, int major, int country){
+    QString filename_names="names.txt";
+    QString randomLine_names = readRandomLine(filename_names, name);
+
+    QString filename_lastNames="lastNames.txt";
+    QString randomLine_lastNames = readRandomLine(filename_lastNames, lastName);
+
+    QString filename_religion="religion.txt";
+    QString randomLine_religion = readRandomLine(filename_religion, religion);
+
+    QString filename_major="major.txt";
+    QString randomLine_major = readRandomLine(filename_major, major);
+
+    QString filename_country="country.txt";
+    QString randomLine_country = readRandomLine(filename_country, country);
+
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    QString formattedDateTime = currentDateTime.toString("yyyy-MM-dd HH:mm:ss");
+
+    Person * person = new Person(getRandomId(), randomLine_names, randomLine_lastNames, randomLine_country, randomLine_religion, randomLine_major, formattedDateTime);
+
+    return person;
+}
+
+Person * Humanity::resurrect(Person * person){
+    QString filename_names="names.txt";
+    QString randomLine_names = readRandomLine(filename_names, 1000);
+
+    QString filename_lastNames="lastNames.txt";
+    QString randomLine_lastNames = readRandomLine(filename_lastNames, 1000);
+
+    QString filename_religion="religion.txt";
+    QString randomLine_religion = readRandomLine(filename_religion, 20);
+
+    QString filename_major="major.txt";
+    QString randomLine_major = readRandomLine(filename_major, 100);
+
+    QString filename_country="country.txt";
+    QString randomLine_country = readRandomLine(filename_country, 100);
+
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    QString formattedDateTime = currentDateTime.toString("yyyy-MM-dd HH:mm:ss");
+
+    person->firstName = randomLine_names;
+    person->lastName = randomLine_lastNames;
+    person->belief = randomLine_religion;
+    person->profession = randomLine_major;
+    person->country = randomLine_country;
+    person->birthDate = formattedDateTime;
+
+    return person;
 }
 
 void Humanity::add(Person* person, Person* origin, bool direction) {
@@ -109,10 +205,8 @@ Person* Humanity::find(int id, Person* origin, bool direction) {
         }
     }
 
-    if (temp != nullptr) {
-        qDebug() << "es algo";
-    } else {
-        qDebug() << "es nulo";
+    if (temp->id != id){
+        return nullptr;
     }
 
     return temp;
@@ -220,7 +314,7 @@ void Humanity::showHeap(SinType sin) {
     buildMaxHeap(sortedList, sin);
     printHeapAsTree(sortedList,sin);}
 
-QVector <Person*> Humanity::killByHeap(int levels, SinType sinType){
+QVector <Person*> Humanity::killByHeap(int levels, SinType sinType){ //conectar con el graveyard
     QVector<Person*> sortedList = sort(sinType);
     buildMaxHeap(sortedList, sinType);
 
@@ -244,61 +338,21 @@ QVector <Person*> Humanity::killByHeap(int levels, SinType sinType){
 
 }
 
-Person* Humanity::killRandom() {
-    if (length <= 0) return nullptr;
+QVector<Person*> Humanity::killRandom(int probability) {
 
-    int randomValue = QRandomGenerator::global()->bounded(length);
+    QVector<Person*> dead;
+
     Person* temp = firstPerson;
 
-
-    if (randomValue == 0) {
-        firstPerson = temp->rightPerson;
-        if (firstPerson != nullptr) {
-            firstPerson->leftPerson = nullptr;
-        } else {
-            lastPerson = nullptr;
+    while (temp!=nullptr){
+        if (QRandomGenerator::global()->bounded(length) <= probability){
+            dead.append(temp);
+            remove(temp->id, temp->leftPerson, 1);
         }
-        length--;
-        return temp;
-    }
-
-
-    if (randomValue == length - 1) {
-        temp = lastPerson;
-        lastPerson = temp->leftPerson;
-
-        if (lastPerson != nullptr) {
-            lastPerson->rightPerson = nullptr;
-        } else {
-            firstPerson = nullptr;
-        }
-        length--;
-        return temp;
-    }
-
-
-    for (int i = 0; i < randomValue; ++i) {
         temp = temp->rightPerson;
     }
 
-
-    if (temp->leftPerson != nullptr) {
-        temp->leftPerson->rightPerson = temp->rightPerson;
-    }
-    if (temp->rightPerson != nullptr) {
-        temp->rightPerson->leftPerson = temp->leftPerson;
-    }
-
-
-    if (temp == lastPerson) {
-        lastPerson = temp->leftPerson;
-    }
-    if (temp == firstPerson) {
-        firstPerson = temp->rightPerson;
-    }
-
-    length--;
-    return temp;
+    return dead;
 }
 
 
@@ -314,7 +368,7 @@ Person* Humanity::killSpecific(int id){ //acoplarlo al arbol
     }
 
 
-    Person *removedPerson = remove(toKill->id, firstPerson, 1);
+    Person *removedPerson = remove(toKill->id, toKill->leftPerson, 1);
 
 
 

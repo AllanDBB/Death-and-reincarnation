@@ -46,6 +46,13 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
             src/cpp/angel.cpp
             src/headers/heaven.h
             src/cpp/heaven.cpp
+            src/names
+            src/lastNames
+            src/majors
+            src/countries
+            src/religion
+            src/deathLog
+            src/angelNames
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Death-and-reincarnation APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

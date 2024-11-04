@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-RelWithDebInfo-41754ea5f154124c2687.json",
+					"jsonFile" : "directory-.-RelWithDebInfo-a16b73ee9514c7ccf837.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Death-and-reincarnation::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Death-and-reincarnation-RelWithDebInfo-2f2902bc84f666b130a5.json",
+					"jsonFile" : "target-Death-and-reincarnation-RelWithDebInfo-7c05594e2530f60b9716.json",
 					"name" : "Death-and-reincarnation",
 					"projectIndex" : 0
 				},

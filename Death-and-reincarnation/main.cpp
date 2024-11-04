@@ -111,11 +111,7 @@ int main(int argc, char *argv[])
 
     humanity.showHeap(LUST);*/
     qDebug()<<"************";
-    World world(&humanity, &graveyard);
 
-    TreeNode * root =world.generate();
-
-    qDebug() << root->person->firstName;
 
 
 
