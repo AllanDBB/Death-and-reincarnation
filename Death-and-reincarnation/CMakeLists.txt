@@ -20,39 +20,34 @@ set(PROJECT_SOURCES
         ./src/headers/person.h
         ./src/headers/humanity.h
         ./src/headers/world.h
+        ./src/headers/angel.h
+        ./src/headers/heaven.h
+        ./src/headers/graveyard.h
         ./src/cpp/world.cpp
         ./src/cpp/person.cpp
         ./src/cpp/humanity.cpp
         ./src/cpp/graveyard.cpp
-        main.cpp
-        main.cpp
-        main.cpp
+        ./src/cpp/angel.cpp
+        ./src/cpp/heaven.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Death-and-reincarnation
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        ./src/headers/person.h
+        src/headers/person.h
         src/headers/humanity.h
         src/headers/world.h
         src/headers/graveyard.h
+        src/headers/heaven.h
+        src/headers/angel.h
         src/cpp/world.cpp
         src/cpp/person.cpp
         src/cpp/humanity.cpp
         src/cpp/graveyard.cpp
-            main.cpp
-            src/headers/angel.h
-            src/cpp/angel.cpp
-            src/headers/heaven.h
-            src/cpp/heaven.cpp
-            src/names
-            src/lastNames
-            src/majors
-            src/countries
-            src/religion
-            src/deathLog
-            src/angelNames
+        src/cpp/angel.cpp
+        src/cpp/heaven.cpp
+        main.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Death-and-reincarnation APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

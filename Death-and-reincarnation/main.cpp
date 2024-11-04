@@ -8,6 +8,9 @@
 #include "src/headers/graveyard.h"
 #include "src/headers/world.h"
 
+#include "./ui_mainwindow.h"
+
+
 int main(int argc, char *argv[])
 {
 
