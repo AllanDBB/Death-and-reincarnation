@@ -76,7 +76,7 @@ void Graveyard::add(Person* person) {
         }
         temp->rightPerson = person;
     }
-    restoreLog();
+
     length++;
 }
 
@@ -124,7 +124,7 @@ Person* Graveyard::remove(int id) {
     length--;
 
     // Llamamos a la función que registra el log
-    restoreLog();
+
 
     return temp;
 }

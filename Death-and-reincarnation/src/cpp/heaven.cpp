@@ -45,6 +45,21 @@ int Heaven::getVersion(const QString& name) {
     return 0;
 }
 
+void getLeaves(Angel* root, QVector<Angel*>& leaves) {
+    if (!root) return;
+
+    // Si el nodo actual no tiene hijos, es una hoja
+    if (!root->firstChild && !root->secondChild && !root->thirdChild) {
+        leaves.append(root);
+    } else {
+        // Si tiene hijos, recursivamente buscamos las hojas en cada subárbol
+        if (root->firstChild) getLeaves(root->firstChild, leaves);
+        if (root->secondChild) getLeaves(root->secondChild, leaves);
+        if (root->thirdChild) getLeaves(root->thirdChild, leaves);
+    }
+}
+
+
 Heaven::Heaven(Graveyard* _graveyard, World* _world, Humanity* _humanity) {
     root = new Angel("GOD", 1, 0, nullptr);
     root->firstChild = new Angel("Serafines", 1, 1, nullptr);
@@ -72,52 +87,24 @@ Heaven::Heaven(Graveyard* _graveyard, World* _world, Humanity* _humanity) {
 }
 
 void Heaven::generateLevel() {
-    if (!root) return;
+    QVector<Angel*> leaves;
+    getLeaves(root, leaves);
+    for (Angel * a: leaves){
+        QString randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
+        int vers = getVersion(randomLine);
+        a->firstChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
+        reincarnatePerson();
 
-    // Cola para procesar solo las hojas
-    std::queue<Angel*> nodeQueue;
-    nodeQueue.push(root);
+        randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
+        vers = getVersion(randomLine);
+        a->secondChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
+        reincarnatePerson();
 
-    // Crear el siguiente nivel de nodos
-    while (!nodeQueue.empty()) {
-        Angel* node = nodeQueue.front();
-        nodeQueue.pop();
-
-        if (node == nullptr) continue;  // Asegúrate de no procesar nodos nulos
-
-        // Si el nodo no tiene hijos, lo procesamos
-        if (node->firstChild == nullptr && node->secondChild == nullptr && node->thirdChild == nullptr) {
-            // Crear los 3 hijos para este nodo
-            QString randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
-            int vers = getVersion(randomLine);
-            node->firstChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-            reincarnatePerson();
-
-            qDebug()<<"pipipipi";
-            randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
-            vers = getVersion(randomLine);
-            qDebug()<<"adios";
-            node->secondChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-            qDebug()<<"gsdghbek";
-            reincarnatePerson();
-            qDebug()<<"casi fin";
-
-            randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
-            vers = getVersion(randomLine);
-            qDebug()<<"pre angel";
-            node->thirdChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-            reincarnatePerson();
-            qDebug()<<"paso";
-
-        } else {
-            // Solo añadimos los hijos a la cola si existen
-            if (node->firstChild) nodeQueue.push(node->firstChild);
-            if (node->secondChild) nodeQueue.push(node->secondChild);
-            if (node->thirdChild) nodeQueue.push(node->thirdChild);
-        }
+        randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
+        vers = getVersion(randomLine);
+        a->thirdChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
+        reincarnatePerson();
     }
-
-    // Incrementar la generación para la próxima llamada
     generation++;
 }
 

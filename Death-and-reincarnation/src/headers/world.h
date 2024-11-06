@@ -25,6 +25,7 @@ struct World{
     int getFreeId(); //todo
     void add(Person*);
     Person* remove(int id);
+    TreeNode* buildBalancedTree(const QVector<Person*>&, int, int);
 
 };
 #endif // WORLD_H
