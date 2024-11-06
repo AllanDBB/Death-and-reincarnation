@@ -7,7 +7,7 @@
 #include "src/headers/humanity.h"
 #include "src/headers/graveyard.h"
 #include "src/headers/world.h"
-
+#include "src/headers/heaven.h"
 #include "./ui_mainwindow.h"
 
 
@@ -69,61 +69,39 @@ int main(int argc, char *argv[])
     person4->sins[2] = 2;
     humanity.showHeap(LUST);
 
+
     Graveyard graveyard = Graveyard(&humanity);
-    /*graveyard.add(person3);
-    graveyard.add(person1);
-    graveyard.add(person2);
-    graveyard.add(person4);
 
-    qDebug() << "---------";
-    qDebug() << graveyard.firstPerson->firstName;
-    qDebug() << graveyard.firstPerson->rightPerson->firstName;
-    qDebug() << graveyard.lastPerson->leftPerson->firstName;
-    qDebug() << graveyard.lastPerson->firstName;
+    for (int i = 1; i<100; i++){
+        Person * p =humanity.createPerson(100,100,100,20,20);
+        humanity.add(p,humanity.firstPerson,1);
+    }
+    World world = World(&humanity, &graveyard);
 
-    qDebug() << "---------";*/
-
-    humanity.showHeap(LUST);
-    //graveyard.remove(1);
-    /*qDebug() << graveyard.firstPerson->firstName;
-    qDebug() << graveyard.firstPerson->rightPerson->firstName;
-    qDebug() << graveyard.lastPerson->firstName;
-
-    qDebug() << graveyard.find(2)->firstName;*/
-
-
-   // humanity.showHeap(LUST);
-
-    //QVector<Person*> killed =humanity.killByHeap(2,LUST);
-    /*for (Person * p: killed){
-        qDebug() << p->firstName;
-    }*/
-    /*humanity.showHeap(LUST);
-
-    qDebug() << humanity.length;
-    humanity.showHeap(LUST);*/
-    qDebug()<<"************";
-
-
-    Person * p = humanity.createPerson(20,20,20,20,20);
-    Person * p1 = humanity.createPerson(20,20,20,20,20);
-    humanity.showHeap(LUST);
-    humanity.add(p,humanity.firstPerson, 1);
-    Person * p2= humanity.killSpecific(p->id);
-    graveyard.add(p2);
-    graveyard.add(p1);
-    graveyard.restoreLog();
+    humanity.humansSin();
     humanity.restoreLog_();
 
-    //qDebug() << p ->firstName;
-    /*humanity.showHeap(LUST);
+    QVector <Person*> people = humanity.killByHeap(5,ALL);
+    ;
 
+    for (Person * p: people){
+        humanity.remove(p->id, humanity.firstPerson, 1);
+        graveyard.add(p);
+    }
+
+    graveyard.restoreLog();
     qDebug()<<"************";
 
-    humanity.killSpecific(1);
-
-    humanity.showHeap(LUST);*/
+    humanity.showHeap(ALL);
     qDebug()<<"************";
+    qDebug()<<"#####";
+    qDebug()<< QString::number(graveyard.length);
+    Heaven heaven = Heaven(&graveyard,&world,&humanity);
+
+    //heaven.generateLevel();
+
+
+    //graveyard.restoreLog();
 
 
 

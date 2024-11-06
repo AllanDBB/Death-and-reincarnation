@@ -79,6 +79,20 @@ int Humanity::getRandomId(){
     return random;
 }
 
+void Humanity::humansSin(){
+    Person * p = firstPerson;
+    while (p!=nullptr){
+        p->sins[0]+=QRandomGenerator::global()->bounded(101);
+        p->sins[1]+=QRandomGenerator::global()->bounded(101);
+        p->sins[2]+=QRandomGenerator::global()->bounded(101);
+        p->sins[3]+=QRandomGenerator::global()->bounded(101);
+        p->sins[4]+=QRandomGenerator::global()->bounded(101);
+        p->sins[5]+=QRandomGenerator::global()->bounded(101);
+        p->sins[6]+=QRandomGenerator::global()->bounded(101);
+        p = p->rightPerson;
+    }
+}
+
 Person * Humanity::createPerson(int name, int lastName, int religion, int major, int country){
     QString filename_names="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/names";
     QString randomLine_names = readRandomLine(filename_names, name);

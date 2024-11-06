@@ -9,51 +9,43 @@
 #include <QRandomGenerator>
 #include <QDebug>
 
-
-QString readRandomLine(const QString& filename) {
+QString readRandomLine_(const QString& filename, int quantity) {
     QFile file(filename);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qWarning() << "Error al abrir el archivo:" << filename;
         return QString();
     }
 
-    QStringList lines;
     QTextStream in(&file);
-
-    // Lee todas las líneas del archivo y las almacena en un QStringList
-    while (!in.atEnd()) {
-        QString line = in.readLine();
-        lines.append(line);
-    }
-    file.close();
-
-    if (lines.isEmpty()) {
-        qWarning() << "El archivo está vacío.";
-        return QString();
+    int randomIndex = QRandomGenerator::global()->bounded(quantity);
+    for (int i = 0; i < randomIndex && !in.atEnd(); ++i) {
+        in.readLine();  // Salta hasta la línea deseada
     }
 
-    // Genera un índice aleatorio
-    int randomIndex = QRandomGenerator::global()->bounded(lines.size());
-
-    return lines[randomIndex]; // Devuelve la línea aleatoria
+    return in.readLine();  // Devuelve la línea aleatoria
 }
 
-void Heaven:: backTozero(){
-
-    miguelVersion = 0;
-    nurielVersion = 0;
-    anielVersion = 0;
-    rafaelVersion = 0;
-    gabrielVersion = 0;
-    shamsielVersion = 0;
-    raguelVersion = 0;
-    urielVersion = 0;
-    azraelVersion = 0;
-    sarielVersion = 0;
+void Heaven::backTozero() {
+    miguelVersion = nurielVersion = anielVersion = 0;
+    rafaelVersion = gabrielVersion = shamsielVersion = 0;
+    raguelVersion = urielVersion = azraelVersion = sarielVersion = 0;
 }
 
+int Heaven::getVersion(const QString& name) {
+    if (name == "Miguel") return ++miguelVersion;
+    if (name == "Nuriel") return ++nurielVersion;
+    if (name == "Aniel") return ++anielVersion;
+    if (name == "Rafael") return ++rafaelVersion;
+    if (name == "Gabriel") return ++gabrielVersion;
+    if (name == "Shamsiel") return ++shamsielVersion;
+    if (name == "Raguel") return ++raguelVersion;
+    if (name == "Uriel") return ++urielVersion;
+    if (name == "Azrael") return ++azraelVersion;
+    if (name == "Sariel") return ++sarielVersion;
+    return 0;
+}
 
-Heaven :: Heaven (Graveyard* _graveyard, World* _world, Humanity * _humanity){
+Heaven::Heaven(Graveyard* _graveyard, World* _world, Humanity* _humanity) {
     root = new Angel("GOD", 1, 0, nullptr);
     root->firstChild = new Angel("Serafines", 1, 1, nullptr);
     root->secondChild = new Angel("Querubines", 1, 1, nullptr);
@@ -79,185 +71,69 @@ Heaven :: Heaven (Graveyard* _graveyard, World* _world, Humanity * _humanity){
     backTozero();
 }
 
-void Heaven::generateLevel(){
-    backTozero();
+void Heaven::generateLevel() {
     if (!root) return;
 
+    // Cola para procesar solo las hojas
     std::queue<Angel*> nodeQueue;
     nodeQueue.push(root);
-    int currentLevel = 0;
 
-    while (!nodeQueue.empty() && currentLevel < (currentLevel+1)) {
-        int nodesInLevel = nodeQueue.size();
-        for (int i = 0; i < nodesInLevel; ++i) {
-            Angel* node = nodeQueue.front();
-            nodeQueue.pop();
+    // Crear el siguiente nivel de nodos
+    while (!nodeQueue.empty()) {
+        Angel* node = nodeQueue.front();
+        nodeQueue.pop();
 
-            QString filename="angelName.txt";
+        if (node == nullptr) continue;  // Asegúrate de no procesar nodos nulos
 
-            generation++;
-            if (!node->firstChild) {
-                QString randomLine = readRandomLine(filename);
-                int vers = 0;
-                if(randomLine == "Miguel"){
-                    miguelVersion++;
-                    vers = miguelVersion;
-                } else if (randomLine == "Nuriel"){
-                    nurielVersion++;
-                    vers = nurielVersion;
-                }else if (randomLine == "Aniel"){
-                    anielVersion++;
-                    vers = anielVersion;
-                }else if (randomLine == "Rafael"){
-                    rafaelVersion++;
-                    vers = rafaelVersion;
-                }else if (randomLine == "Gabriel"){
-                    gabrielVersion++;
-                    vers = gabrielVersion;
-                }else if (randomLine == "Shamsiel"){
-                    shamsielVersion++;
-                    vers = shamsielVersion;
-                }else if (randomLine == "Raguel"){
-                    raguelVersion++;
-                    vers = raguelVersion;
-                }else if (randomLine == "Uriel"){
-                    urielVersion++;
-                    vers = urielVersion;
-                }else if (randomLine == "Azrael"){
-                    azraelVersion++;
-                    vers = azraelVersion;
-                }else if (randomLine == "Sariel"){
-                    sarielVersion++;
-                    vers = sarielVersion;
-                }
+        // Si el nodo no tiene hijos, lo procesamos
+        if (node->firstChild == nullptr && node->secondChild == nullptr && node->thirdChild == nullptr) {
+            // Crear los 3 hijos para este nodo
+            QString randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
+            int vers = getVersion(randomLine);
+            node->firstChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
+            reincarnatePerson();
 
+            qDebug()<<"pipipipi";
+            randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
+            vers = getVersion(randomLine);
+            qDebug()<<"adios";
+            node->secondChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
+            qDebug()<<"gsdghbek";
+            reincarnatePerson();
+            qDebug()<<"casi fin";
 
+            randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
+            vers = getVersion(randomLine);
+            qDebug()<<"pre angel";
+            node->thirdChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
+            reincarnatePerson();
+            qDebug()<<"paso";
 
-                node->firstChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-                graveyard->firstPerson->reincarnations.append(graveyard->firstPerson);
-                Person * newPerson = humanity->resurrect(graveyard->firstPerson);
-                newPerson->sins[0] = graveyard->firstPerson->sins[0]/2;
-                newPerson->sins[1] = graveyard->firstPerson->sins[1]/2;
-                newPerson->sins[2] = graveyard->firstPerson->sins[2]/2;
-                newPerson->sins[3] = graveyard->firstPerson->sins[3]/2;
-                newPerson->sins[4] = graveyard->firstPerson->sins[4]/2;
-                newPerson->sins[5] = graveyard->firstPerson->sins[5]/2;
-                newPerson->sins[6] = graveyard->firstPerson->sins[6]/2;
-                world->add(newPerson);
-                graveyard->remove(graveyard->firstPerson->id);
-            }
-            if (!node->secondChild) {
-
-                QString randomLine = readRandomLine(filename);
-                int vers = 0;
-                if(randomLine == "Miguel"){
-                    miguelVersion++;
-                    vers = miguelVersion;
-                } else if (randomLine == "Nuriel"){
-                    nurielVersion++;
-                    vers = nurielVersion;
-                }else if (randomLine == "Aniel"){
-                    anielVersion++;
-                    vers = anielVersion;
-                }else if (randomLine == "Rafael"){
-                    rafaelVersion++;
-                    vers = rafaelVersion;
-                }else if (randomLine == "Gabriel"){
-                    gabrielVersion++;
-                    vers = gabrielVersion;
-                }else if (randomLine == "Shamsiel"){
-                    shamsielVersion++;
-                    vers = shamsielVersion;
-                }else if (randomLine == "Raguel"){
-                    raguelVersion++;
-                    vers = raguelVersion;
-                }else if (randomLine == "Uriel"){
-                    urielVersion++;
-                    vers = urielVersion;
-                }else if (randomLine == "Azrael"){
-                    azraelVersion++;
-                    vers = azraelVersion;
-                }else if (randomLine == "Sariel"){
-                    sarielVersion++;
-                    vers = sarielVersion;
-                }
-
-
-
-                node->secondChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-                graveyard->firstPerson->reincarnations.append(graveyard->firstPerson);
-                Person * newPerson = humanity->resurrect(graveyard->firstPerson);
-                newPerson->sins[0] = graveyard->firstPerson->sins[0]/2;
-                newPerson->sins[1] = graveyard->firstPerson->sins[1]/2;
-                newPerson->sins[2] = graveyard->firstPerson->sins[2]/2;
-                newPerson->sins[3] = graveyard->firstPerson->sins[3]/2;
-                newPerson->sins[4] = graveyard->firstPerson->sins[4]/2;
-                newPerson->sins[5] = graveyard->firstPerson->sins[5]/2;
-                newPerson->sins[6] = graveyard->firstPerson->sins[6]/2;
-                world->add(newPerson);
-                graveyard->remove(graveyard->firstPerson->id);
-            }
-            if (!node->thirdChild) {
-
-                QString randomLine = readRandomLine(filename);
-                int vers = 0;
-                if(randomLine == "Miguel"){
-                    miguelVersion++;
-                    vers = miguelVersion;
-                } else if (randomLine == "Nuriel"){
-                    nurielVersion++;
-                    vers = nurielVersion;
-                }else if (randomLine == "Aniel"){
-                    anielVersion++;
-                    vers = anielVersion;
-                }else if (randomLine == "Rafael"){
-                    rafaelVersion++;
-                    vers = rafaelVersion;
-                }else if (randomLine == "Gabriel"){
-                    gabrielVersion++;
-                    vers = gabrielVersion;
-                }else if (randomLine == "Shamsiel"){
-                    shamsielVersion++;
-                    vers = shamsielVersion;
-                }else if (randomLine == "Raguel"){
-                    raguelVersion++;
-                    vers = raguelVersion;
-                }else if (randomLine == "Uriel"){
-                    urielVersion++;
-                    vers = urielVersion;
-                }else if (randomLine == "Azrael"){
-                    azraelVersion++;
-                    vers = azraelVersion;
-                }else if (randomLine == "Sariel"){
-                    sarielVersion++;
-                    vers = sarielVersion;
-                }
-
-
-
-                node->thirdChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-                graveyard->firstPerson->reincarnations.append(graveyard->firstPerson);
-                Person * newPerson = humanity->resurrect(graveyard->firstPerson);
-                newPerson->sins[0] = graveyard->firstPerson->sins[0]/2;
-                newPerson->sins[1] = graveyard->firstPerson->sins[1]/2;
-                newPerson->sins[2] = graveyard->firstPerson->sins[2]/2;
-                newPerson->sins[3] = graveyard->firstPerson->sins[3]/2;
-                newPerson->sins[4] = graveyard->firstPerson->sins[4]/2;
-                newPerson->sins[5] = graveyard->firstPerson->sins[5]/2;
-               newPerson->sins[6] = graveyard->firstPerson->sins[6]/2;
-                world->add(newPerson);
-                graveyard->remove(graveyard->firstPerson->id);
-            }
-
-
-            nodeQueue.push(node->firstChild);
-            nodeQueue.push(node->secondChild);
-            nodeQueue.push(node->thirdChild);
+        } else {
+            // Solo añadimos los hijos a la cola si existen
+            if (node->firstChild) nodeQueue.push(node->firstChild);
+            if (node->secondChild) nodeQueue.push(node->secondChild);
+            if (node->thirdChild) nodeQueue.push(node->thirdChild);
         }
-        currentLevel++;
     }
+
+    // Incrementar la generación para la próxima llamada
+    generation++;
 }
 
 
 
 
+void Heaven::reincarnatePerson() {
+    graveyard->firstPerson->reincarnations.append(graveyard->firstPerson);
+    Person* newPerson = humanity->resurrect(graveyard->firstPerson);
+
+    for (int i = 0; i < 7; ++i) {
+        newPerson->sins[i] = graveyard->firstPerson->sins[i] / 2;
+    }
+    qDebug()<<"ayuda";
+    world->add(newPerson);
+    Person * p = graveyard->remove(graveyard->firstPerson->id);
+    if (p==nullptr){
+        qDebug()<<"{{{{{";}
+}

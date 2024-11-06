@@ -90,29 +90,45 @@ Person* Graveyard::remove(int id) {
         temp = temp->rightPerson;
     }
 
-    if (temp == nullptr) return nullptr;
+    if (temp == nullptr) return nullptr;  // No se encuentra la persona con el ID especificado
 
-
-    if (temp->leftPerson != nullptr) {
-        temp->leftPerson->rightPerson = temp->rightPerson;
-    } else {
+    // Caso cuando la persona es la primera en la lista
+    if (temp == firstPerson) {
         firstPerson = temp->rightPerson;
+        if (firstPerson != nullptr) {
+            firstPerson->leftPerson = nullptr;
+        }
+    } else {  // Caso cuando no es la primera persona
+        if (temp->leftPerson != nullptr) {
+            temp->leftPerson->rightPerson = temp->rightPerson;
+        }
     }
 
-    if (temp->rightPerson != nullptr) {
-        temp->rightPerson->leftPerson = temp->leftPerson;
-    } else {
+    // Caso cuando la persona es la última en la lista
+    if (temp == lastPerson) {
         lastPerson = temp->leftPerson;
+        if (lastPerson != nullptr) {
+            lastPerson->rightPerson = nullptr;
+        }
+    } else {  // Caso cuando no es la última persona
+        if (temp->rightPerson != nullptr) {
+            temp->rightPerson->leftPerson = temp->leftPerson;
+        }
     }
 
-
+    // Limpiamos los punteros del nodo eliminado
     temp->leftPerson = nullptr;
     temp->rightPerson = nullptr;
 
+    // Actualizamos el contador de elementos en la lista
     length--;
+
+    // Llamamos a la función que registra el log
     restoreLog();
+
     return temp;
 }
+
 
 Person* Graveyard::find(int id){
     if (length == 0) return nullptr;

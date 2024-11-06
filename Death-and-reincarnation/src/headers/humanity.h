@@ -25,5 +25,6 @@ struct Humanity{
     Person * resurrect(Person * person);
     void makeFriends();
     void restoreLog_();
+    void humansSin();
 };
 #endif // HUMANITY_H
