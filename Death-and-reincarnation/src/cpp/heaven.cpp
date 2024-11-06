@@ -80,6 +80,7 @@ Heaven :: Heaven (Graveyard* _graveyard, World* _world, Humanity * _humanity){
 }
 
 void Heaven::generateLevel(){
+    backTozero();
     if (!root) return;
 
     std::queue<Angel*> nodeQueue;
@@ -95,8 +96,6 @@ void Heaven::generateLevel(){
             QString filename="angelName.txt";
 
             generation++;
-
-            // Crear hijos si no existen
             if (!node->firstChild) {
                 QString randomLine = readRandomLine(filename);
                 int vers = 0;
@@ -135,7 +134,16 @@ void Heaven::generateLevel(){
 
 
                 node->firstChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-                world->add(humanity->resurrect(graveyard->firstPerson));
+                graveyard->firstPerson->reincarnations.append(graveyard->firstPerson);
+                Person * newPerson = humanity->resurrect(graveyard->firstPerson);
+                newPerson->sins[0] = graveyard->firstPerson->sins[0]/2;
+                newPerson->sins[1] = graveyard->firstPerson->sins[1]/2;
+                newPerson->sins[2] = graveyard->firstPerson->sins[2]/2;
+                newPerson->sins[3] = graveyard->firstPerson->sins[3]/2;
+                newPerson->sins[4] = graveyard->firstPerson->sins[4]/2;
+                newPerson->sins[5] = graveyard->firstPerson->sins[5]/2;
+                newPerson->sins[6] = graveyard->firstPerson->sins[6]/2;
+                world->add(newPerson);
                 graveyard->remove(graveyard->firstPerson->id);
             }
             if (!node->secondChild) {
@@ -177,6 +185,17 @@ void Heaven::generateLevel(){
 
 
                 node->secondChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
+                graveyard->firstPerson->reincarnations.append(graveyard->firstPerson);
+                Person * newPerson = humanity->resurrect(graveyard->firstPerson);
+                newPerson->sins[0] = graveyard->firstPerson->sins[0]/2;
+                newPerson->sins[1] = graveyard->firstPerson->sins[1]/2;
+                newPerson->sins[2] = graveyard->firstPerson->sins[2]/2;
+                newPerson->sins[3] = graveyard->firstPerson->sins[3]/2;
+                newPerson->sins[4] = graveyard->firstPerson->sins[4]/2;
+                newPerson->sins[5] = graveyard->firstPerson->sins[5]/2;
+                newPerson->sins[6] = graveyard->firstPerson->sins[6]/2;
+                world->add(newPerson);
+                graveyard->remove(graveyard->firstPerson->id);
             }
             if (!node->thirdChild) {
 
@@ -217,9 +236,20 @@ void Heaven::generateLevel(){
 
 
                 node->thirdChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
+                graveyard->firstPerson->reincarnations.append(graveyard->firstPerson);
+                Person * newPerson = humanity->resurrect(graveyard->firstPerson);
+                newPerson->sins[0] = graveyard->firstPerson->sins[0]/2;
+                newPerson->sins[1] = graveyard->firstPerson->sins[1]/2;
+                newPerson->sins[2] = graveyard->firstPerson->sins[2]/2;
+                newPerson->sins[3] = graveyard->firstPerson->sins[3]/2;
+                newPerson->sins[4] = graveyard->firstPerson->sins[4]/2;
+                newPerson->sins[5] = graveyard->firstPerson->sins[5]/2;
+               newPerson->sins[6] = graveyard->firstPerson->sins[6]/2;
+                world->add(newPerson);
+                graveyard->remove(graveyard->firstPerson->id);
             }
 
-            // Añadir hijos a la cola para expandir el siguiente nivel
+
             nodeQueue.push(node->firstChild);
             nodeQueue.push(node->secondChild);
             nodeQueue.push(node->thirdChild);

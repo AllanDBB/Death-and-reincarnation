@@ -1,7 +1,6 @@
 #include "../../src/headers/humanity.h"
 #include <QDebug>
 #include <QRandomGenerator>
-#include "../../src/headers/graveyard.h"
 #include <QCoreApplication>
 #include <QFile>
 #include <QTextStream>
@@ -10,10 +9,49 @@
 #include <QDebug>
 #include <QDateTime>
 
+
+
 Humanity::Humanity() {
     length = 0;
     firstPerson = nullptr;
     lastPerson = nullptr;
+    deaths = 0;
+}
+
+void writeToFile_(const QString& filename, const QString& text) {
+    QFile file(filename);
+
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)) {
+        QTextStream out(&file);
+        out << text << "\n";
+        file.close();
+        qDebug() << "Texto escrito correctamente en" << filename;
+    } else {
+        qWarning() << "No se pudo abrir el archivo para escribir:" << filename;
+    }
+}
+
+void clearFile_(const QString& filename) {
+    QFile file(filename);
+
+    // Abre el archivo en modo de escritura con la opción Truncate para vaciarlo
+    if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+        file.close();
+        qDebug() << "Archivo limpiado correctamente:" << filename;
+    } else {
+        qWarning() << "No se pudo abrir el archivo para limpiar:" << filename;
+    }
+}
+
+void Humanity::restoreLog_(){
+    clearFile_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/humanity");
+
+    Person * person = firstPerson;
+
+    while (person!=nullptr){
+        writeToFile_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/humanity",  person->toString());
+        person=person->rightPerson;
+    }
 }
 
 QString readRandomLine(const QString& filename, int quantity) {
@@ -23,26 +61,15 @@ QString readRandomLine(const QString& filename, int quantity) {
         return QString();
     }
 
-    QStringList lines;
     QTextStream in(&file);
-
-    // Lee todas las líneas del archivo y las almacena en un QStringList
-    while (!in.atEnd()) {
-        QString line = in.readLine();
-        lines.append(line);
-    }
-    file.close();
-
-    if (lines.isEmpty()) {
-        qWarning() << "El archivo está vacío.";
-        return QString();
-    }
-
-    // Genera un índice aleatorio
     int randomIndex = QRandomGenerator::global()->bounded(quantity);
+    for (int i = 0; i < randomIndex && !in.atEnd(); ++i) {
+        in.readLine();  // Salta hasta la línea deseada
+    }
 
-    return lines[randomIndex]; // Devuelve la línea aleatoria
+    return in.readLine();  // Devuelve la línea aleatoria
 }
+
 
 int Humanity::getRandomId(){
     int random = QRandomGenerator::global()->bounded(1000000);
@@ -53,19 +80,19 @@ int Humanity::getRandomId(){
 }
 
 Person * Humanity::createPerson(int name, int lastName, int religion, int major, int country){
-    QString filename_names="names.txt";
+    QString filename_names="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/names";
     QString randomLine_names = readRandomLine(filename_names, name);
 
-    QString filename_lastNames="lastNames.txt";
+    QString filename_lastNames="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/lastNames";
     QString randomLine_lastNames = readRandomLine(filename_lastNames, lastName);
 
-    QString filename_religion="religion.txt";
+    QString filename_religion="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/religion";
     QString randomLine_religion = readRandomLine(filename_religion, religion);
 
-    QString filename_major="major.txt";
+    QString filename_major="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/majors";
     QString randomLine_major = readRandomLine(filename_major, major);
 
-    QString filename_country="country.txt";
+    QString filename_country="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/countries";
     QString randomLine_country = readRandomLine(filename_country, country);
 
     QDateTime currentDateTime = QDateTime::currentDateTime();
@@ -77,32 +104,27 @@ Person * Humanity::createPerson(int name, int lastName, int religion, int major,
 }
 
 Person * Humanity::resurrect(Person * person){
-    QString filename_names="names.txt";
+    QString filename_names="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/names";
     QString randomLine_names = readRandomLine(filename_names, 1000);
 
-    QString filename_lastNames="lastNames.txt";
+    QString filename_lastNames="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/lastNames";
     QString randomLine_lastNames = readRandomLine(filename_lastNames, 1000);
 
-    QString filename_religion="religion.txt";
+    QString filename_religion="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/religion";
     QString randomLine_religion = readRandomLine(filename_religion, 20);
 
-    QString filename_major="major.txt";
+    QString filename_major="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/majors";
     QString randomLine_major = readRandomLine(filename_major, 100);
 
-    QString filename_country="country.txt";
+    QString filename_country="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/countries";
     QString randomLine_country = readRandomLine(filename_country, 100);
 
     QDateTime currentDateTime = QDateTime::currentDateTime();
     QString formattedDateTime = currentDateTime.toString("yyyy-MM-dd HH:mm:ss");
 
-    person->firstName = randomLine_names;
-    person->lastName = randomLine_lastNames;
-    person->belief = randomLine_religion;
-    person->profession = randomLine_major;
-    person->country = randomLine_country;
-    person->birthDate = formattedDateTime;
+    Person * newPerson = new Person(person->id,randomLine_names, randomLine_lastNames,  randomLine_country,randomLine_religion,  randomLine_major, formattedDateTime);
 
-    return person;
+    return newPerson;
 }
 
 void Humanity::add(Person* person, Person* origin, bool direction) {
@@ -130,7 +152,6 @@ void Humanity::add(Person* person, Person* origin, bool direction) {
     } else {
         Person *temp = origin;
         while (temp->leftPerson != nullptr && temp->leftPerson->id > person->id) {
-            qDebug() << "ME MOVI IZQUIERDA";
             temp = temp->leftPerson;
         }
 
@@ -188,24 +209,21 @@ Person* Humanity::remove(int id, Person* origin, bool direction) {
 }
 
 Person* Humanity::find(int id, Person* origin, bool direction) {
-    qDebug() << "entrar apenas";
     if (length == 0) return nullptr;
 
     Person *temp = origin;
 
     if (direction) {
-        qDebug() << "si direccion";
         while (temp != nullptr && id != temp->id) {
             temp = temp->rightPerson;
         }
     } else {
-        qDebug() << "no direccion ";
         while (temp != nullptr && id != temp->id) {
             temp = temp->leftPerson;
         }
     }
 
-    if (temp->id != id){
+    if (temp == nullptr || temp->id != id){
         return nullptr;
     }
 
@@ -315,13 +333,19 @@ void Humanity::showHeap(SinType sin) {
     printHeapAsTree(sortedList,sin);}
 
 QVector <Person*> Humanity::killByHeap(int levels, SinType sinType){ //conectar con el graveyard
+    deaths++;
     QVector<Person*> sortedList = sort(sinType);
     buildMaxHeap(sortedList, sinType);
+
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    QString formattedDateTime = currentDateTime.toString("yyyy-MM-dd HH:mm:ss");
+
 
     int toDelete = pow(2,levels)-1;
     QVector <Person*> killed;
 
     if (toDelete>length){
+
         return killed;
     }
 
@@ -334,50 +358,73 @@ QVector <Person*> Humanity::killByHeap(int levels, SinType sinType){ //conectar 
         toDelete--;
     };
 
+    for(Person * p: killed){
+        p->timeOfDeath = formattedDateTime;
+        p->typeOfDeath = "heap";
+    }
+
+
     return killed;
 
 }
 
-QVector<Person*> Humanity::killRandom(int probability) {
+Person* Humanity::killSpecific(int id){
+    deaths++;
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    QString formattedDateTime = currentDateTime.toString("yyyy-MM-dd HH:mm:ss");
+    Person* found = find(id, firstPerson, 1);
 
+
+    if (found != nullptr){
+        Person * p = remove(id, firstPerson, 1);
+        if (p== nullptr){
+
+        }
+        found->timeOfDeath = formattedDateTime;
+        found->typeOfDeath = "specific";
+    }
+
+    return found;
+}
+
+QVector<Person*> Humanity::killRandom(int probability) {
+    deaths++;
     QVector<Person*> dead;
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    QString formattedDateTime = currentDateTime.toString("yyyy-MM-dd HH:mm:ss");
 
     Person* temp = firstPerson;
-
-    while (temp!=nullptr){
-        if (QRandomGenerator::global()->bounded(length) <= probability){
+    while (temp != nullptr) {
+        Person* nextPerson = temp->rightPerson;
+        if (QRandomGenerator::global()->bounded(101) <= probability) {
             dead.append(temp);
             remove(temp->id, temp->leftPerson, 1);
         }
-        temp = temp->rightPerson;
+        temp = nextPerson;
     }
+
+    for (Person* p : dead) {
+        p->timeOfDeath = formattedDateTime;
+        p->typeOfDeath = "random";
+    }
+
 
     return dead;
 }
 
 
-Person* Humanity::killSpecific(int id){ //acoplarlo al arbol
+void Humanity::makeFriends(){
+    Person * temp = firstPerson;
 
-    Person *toKill = find(id, firstPerson, 1);
+    while (temp!=nullptr){
+        Person * temp2 = firstPerson;
 
-
-
-    if (toKill == nullptr) {
-
-        return nullptr;
+        while (temp2!=nullptr){
+            if (temp->belief == temp2->belief || temp->lastName == temp2->lastName || temp->country == temp2->country){
+                temp->myFriends.append(temp2);
+            }
+            temp2=temp2->rightPerson;
+        }
+        temp=temp->rightPerson;
     }
-
-
-    Person *removedPerson = remove(toKill->id, toKill->leftPerson, 1);
-
-
-
-    if (removedPerson != nullptr) {
-
-        return removedPerson;
-    }
-
-
-    return nullptr;
 }
-

@@ -9,6 +9,8 @@ Person::Person(int _id, QString _firstName, QString _lastName, QString _country,
     profession = _profession;
     birthDate = _birthDate;
     condition = 1;
+    timeOfDeath = "n/a";
+    typeOfDeath="n/a";
 
     leftPerson = nullptr;
     rightPerson = nullptr;
@@ -20,4 +22,9 @@ int Person::getSinSum(){
         sum += sins[i];
     }
     return sum;
+}
+
+QString Person:: toString(){
+    return firstName+"\t"+lastName+"\t"+QString::number(id)+"\t"+ country+"\t"+belief+"\t"+profession+"\t"+birthDate;
+
 }

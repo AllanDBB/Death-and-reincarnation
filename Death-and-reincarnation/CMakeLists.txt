@@ -29,6 +29,14 @@ set(PROJECT_SOURCES
         ./src/cpp/graveyard.cpp
         ./src/cpp/angel.cpp
         ./src/cpp/heaven.cpp
+        ./src/angelNames
+        ./src/names
+        ./src/lastNames
+        ./src/countries
+        ./src/religion
+        ./src/majors
+        ./src/deathLog
+        ./src/humanity
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -48,6 +56,14 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         src/cpp/angel.cpp
         src/cpp/heaven.cpp
         main.cpp
+        src/angelNames
+        src/names
+        src/lastNames
+        src/countries
+        src/religion
+        src/majors
+        src/deathLog
+        src/humanity
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Death-and-reincarnation APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

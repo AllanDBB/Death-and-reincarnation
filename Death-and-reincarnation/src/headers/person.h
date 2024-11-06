@@ -29,13 +29,16 @@ struct Person {
     QString belief;
     QString profession;
     QString birthDate;
-    QVector<Person> myFriends;
+    QString timeOfDeath;
+    QString typeOfDeath;
+    QVector<Person*> myFriends;
     QVector<Person> otherFriend;
-    QVector<Person> reincarnations;
+    QVector<Person*> reincarnations;
 
     bool condition;
 
     Person(int, QString, QString, QString, QString, QString, QString);
+    QString toString();
     int getSinSum ();
 
 };

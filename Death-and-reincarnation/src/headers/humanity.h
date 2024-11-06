@@ -9,6 +9,7 @@ struct Humanity{
     Person* firstPerson;
     Person* lastPerson;
     int length;
+    int deaths;
 
     Humanity();
     void add(Person*, Person*, bool);
@@ -22,5 +23,7 @@ struct Humanity{
     Person * createPerson(int, int, int, int, int);
     int getRandomId();
     Person * resurrect(Person * person);
+    void makeFriends();
+    void restoreLog_();
 };
 #endif // HUMANITY_H
