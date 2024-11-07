@@ -49,7 +49,7 @@ void Humanity::restoreLog_(){
     Person * person = firstPerson;
 
     while (person!=nullptr){
-        writeToFile_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/humanity",  person->toString());
+        writeToFile_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/humanity",  person->toString() +"\t"+QString::number(person->reincarnations.size()));
         person=person->rightPerson;
     }
 }

@@ -8,6 +8,24 @@
 #include <QStringList>
 #include <QRandomGenerator>
 #include <QDebug>
+#include <QDateTime>
+
+void generateResurrectionFile(const QString& content) {
+    // Generar nombre de archivo con la fecha y hora actuales
+    QString fileName = "resurrection_" + QDateTime::currentDateTime().toString("yyyyMMdd_HHmmss") + ".txt";
+
+    QFile file("C:/Users/natal/Desktop/u" + fileName);
+
+    // Intentar abrir el archivo en modo escritura
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "si entre";
+        QTextStream out(&file);
+        out << content;  // Escribe el contenido en el archivo
+        file.close();
+    } else {
+        qDebug() << "Error al crear el archivo:" << fileName;
+    }
+}
 
 QString readRandomLine_(const QString& filename, int quantity) {
     QFile file(filename);
@@ -87,40 +105,52 @@ Heaven::Heaven(Graveyard* _graveyard, World* _world, Humanity* _humanity) {
 }
 
 void Heaven::generateLevel() {
+    QString forFile;
     QVector<Angel*> leaves;
     getLeaves(root, leaves);
     for (Angel * a: leaves){
         QString randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
         int vers = getVersion(randomLine);
         a->firstChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-        reincarnatePerson();
+        forFile.append(graveyard->firstPerson->toString()+" resucitó como: ");
+        QString temp = reincarnatePerson();
+        forFile.append(temp);
+        forFile.append("\n");
+
 
         randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
         vers = getVersion(randomLine);
         a->secondChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-        reincarnatePerson();
+        forFile.append(graveyard->firstPerson->toString()+" resucitó como: ");
+        temp = reincarnatePerson();
+        forFile.append(temp);
+        forFile.append("\n");
 
         randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
         vers = getVersion(randomLine);
         a->thirdChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-        reincarnatePerson();
+        forFile.append(graveyard->firstPerson->toString()+" resucitó como: ");
+        temp = reincarnatePerson();
+        forFile.append(temp);
+        forFile.append("\n");
     }
+    generateResurrectionFile(forFile);
     generation++;
 }
 
 
 
 
-void Heaven::reincarnatePerson() {
-    graveyard->firstPerson->reincarnations.append(graveyard->firstPerson);
+QString Heaven::reincarnatePerson() {
     Person* newPerson = humanity->resurrect(graveyard->firstPerson);
 
     for (int i = 0; i < 7; ++i) {
         newPerson->sins[i] = graveyard->firstPerson->sins[i] / 2;
     }
-    qDebug()<<"ayuda";
+
     world->add(newPerson);
-    Person * p = graveyard->remove(graveyard->firstPerson->id);
-    if (p==nullptr){
-        qDebug()<<"{{{{{";}
+    newPerson->reincarnations.append(graveyard->firstPerson);
+    graveyard->remove(graveyard->firstPerson->id);
+
+    return newPerson->toString();
 }

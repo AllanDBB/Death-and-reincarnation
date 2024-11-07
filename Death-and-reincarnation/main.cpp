@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
 
     for (int i = 0; i<100; i++){
-        Person * p =humanity.createPerson(100,100,100,20,20);
+        Person * p =humanity.createPerson(1000,1000,20,100,100);
         world.add(p);
     }
 
@@ -49,7 +49,6 @@ int main(int argc, char *argv[])
     Heaven heaven = Heaven(&graveyard,&world,&humanity);
 
     heaven.generateLevel();
-
 
     graveyard.restoreLog();
     humanity.restoreLog_();

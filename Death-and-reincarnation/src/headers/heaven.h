@@ -23,7 +23,7 @@ struct Heaven{
     int sarielVersion;
 
     Heaven(Graveyard *, World *, Humanity *);
-    void reincarnatePerson();
+    QString reincarnatePerson();
     void backTozero();
     void generateLevel();
     int getVersion(const QString&);
