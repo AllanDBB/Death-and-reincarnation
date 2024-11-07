@@ -26,5 +26,7 @@ struct Humanity{
     void makeFriends();
     void restoreLog_();
     void humansSin();
+    QVector<Person*> humansWithNReincarnations(int);
+    QVector<QString> getTopSinCountries(int);
 };
 #endif // HUMANITY_H

@@ -53,6 +53,12 @@ int main(int argc, char *argv[])
     graveyard.restoreLog();
     humanity.restoreLog_();
 
+    QVector <QString> top= humanity.getTopSinCountries(5);
+    for (QString t:top){
+        qDebug()<<t;
+    }
+
+
 
 
     QApplication a(argc, argv);

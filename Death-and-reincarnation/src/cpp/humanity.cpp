@@ -8,8 +8,7 @@
 #include <QRandomGenerator>
 #include <QDebug>
 #include <QDateTime>
-
-
+#include <QMap>
 
 Humanity::Humanity() {
     length = 0;
@@ -441,4 +440,48 @@ void Humanity::makeFriends(){
         }
         temp=temp->rightPerson;
     }
+}
+
+QVector<Person*> Humanity::humansWithNReincarnations(int n){
+    QVector <Person*> h;
+    Person * temp = firstPerson;
+
+    while (temp!=nullptr){
+        if (temp->reincarnations.size() == n){
+            h.append(temp);
+        }
+        temp=temp->rightPerson;
+    }
+    return h;
+}
+
+QVector<QString> Humanity::getTopSinCountries(int topN) {
+    // Mapa para acumular la suma de pecados por país
+    QMap<QString, int> countrySins;
+
+    // Recorremos la lista de personas y sumamos sus pecados al país correspondiente
+    Person* current = firstPerson;
+    while (current != nullptr) {
+        countrySins[current->country] += current->getSinSum();
+        current = current->rightPerson;
+    }
+
+    // Convertimos el mapa a un vector de pares país y suma de pecados
+    QVector<QPair<QString, int>> sortedCountries;
+    for (auto it = countrySins.begin(); it != countrySins.end(); ++it) {
+        sortedCountries.append(qMakePair(it.key(), it.value()));
+    }
+
+    // Ordenamos el vector en orden descendente según la suma de pecados
+    std::sort(sortedCountries.begin(), sortedCountries.end(), [](const QPair<QString, int>& a, const QPair<QString, int>& b) {
+        return a.second > b.second;
+    });
+
+    // Preparamos el resultado con el top N países
+    QVector<QString> topSinCountries;
+    for (int i = 0; i < topN && i < sortedCountries.size(); ++i) {
+        topSinCountries.append(QString("%1: %2 pecados").arg(sortedCountries[i].first).arg(sortedCountries[i].second));
+    }
+
+    return topSinCountries;
 }
