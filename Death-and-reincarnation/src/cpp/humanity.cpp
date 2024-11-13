@@ -43,12 +43,12 @@ void clearFile_(const QString& filename) {
 }
 
 void Humanity::restoreLog_(){
-    clearFile_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/humanity");
+    clearFile_("C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/humanity");
 
     Person * person = firstPerson;
 
     while (person!=nullptr){
-        writeToFile_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/humanity",  person->toString() +"\t"+QString::number(person->reincarnations.size()));
+        writeToFile_("C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/humanity",  person->toString() +"\t"+QString::number(person->reincarnations.size()));
         person=person->rightPerson;
     }
 }
@@ -93,19 +93,19 @@ void Humanity::humansSin(){
 }
 
 Person * Humanity::createPerson(int name, int lastName, int religion, int major, int country){
-    QString filename_names="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/names";
+    QString filename_names="C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/names";
     QString randomLine_names = readRandomLine(filename_names, name);
 
-    QString filename_lastNames="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/lastNames";
+    QString filename_lastNames="C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/lastNames";
     QString randomLine_lastNames = readRandomLine(filename_lastNames, lastName);
 
-    QString filename_religion="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/religion";
+    QString filename_religion="C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/religion";
     QString randomLine_religion = readRandomLine(filename_religion, religion);
 
-    QString filename_major="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/majors";
+    QString filename_major="C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/majors";
     QString randomLine_major = readRandomLine(filename_major, major);
 
-    QString filename_country="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/countries";
+    QString filename_country="C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/countries";
     QString randomLine_country = readRandomLine(filename_country, country);
 
     QDateTime currentDateTime = QDateTime::currentDateTime();
@@ -117,19 +117,19 @@ Person * Humanity::createPerson(int name, int lastName, int religion, int major,
 }
 
 Person * Humanity::resurrect(Person * person){
-    QString filename_names="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/names";
+    QString filename_names="C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/names";
     QString randomLine_names = readRandomLine(filename_names, 1000);
 
-    QString filename_lastNames="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/lastNames";
+    QString filename_lastNames="C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/lastNames";
     QString randomLine_lastNames = readRandomLine(filename_lastNames, 1000);
 
-    QString filename_religion="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/religion";
+    QString filename_religion="C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/religion";
     QString randomLine_religion = readRandomLine(filename_religion, 20);
 
-    QString filename_major="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/majors";
+    QString filename_major="C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/majors";
     QString randomLine_major = readRandomLine(filename_major, 100);
 
-    QString filename_country="C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/countries";
+    QString filename_country="C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/countries";
     QString randomLine_country = readRandomLine(filename_country, 100);
 
     QDateTime currentDateTime = QDateTime::currentDateTime();

@@ -3,6 +3,7 @@ C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-rein
 C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/headers/angel.h
 C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/mainwindow.h
  mmc:Q_OBJECT
+ mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/QThread
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/q20functional.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/q20memory.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/q20type_traits.h
@@ -34,7 +35,9 @@ C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-rein
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qcontiguouscache.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qdarwinhelpers.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qdatastream.h
+ mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qdeadlinetimer.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qdebug.h
+ mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qelapsedtimer.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qendian.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qexceptionhandling.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qflags.h
@@ -104,6 +107,7 @@ C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-rein
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qtdeprecationmarkers.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qtenvironmentvariables.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qtextstream.h
+ mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qthread.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qtmetamacros.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qtnoop.h
  mdp:C:/Qt/6.7.3/mingw_64/include/QtCore/qtpreprocessorsupport.h
@@ -167,6 +171,7 @@ C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-rein
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/allocated_ptr.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/allocator.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_base.h
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_futex.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_lockfree_defines.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_string.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_string.tcc
@@ -209,6 +214,8 @@ C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-rein
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/specfun.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_abs.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_function.h
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_mutex.h
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_thread.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_algo.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_algobase.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_bvector.h
@@ -235,6 +242,7 @@ C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-rein
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/string_view.tcc
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stringfwd.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/uniform_int_dist.h
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unique_lock.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unique_ptr.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unordered_map.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/uses_allocator.h
@@ -245,6 +253,7 @@ C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-rein
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/climits
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/clocale
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cmath
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/condition_variable
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstddef
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdint
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdio
@@ -264,6 +273,7 @@ C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-rein
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/string_conversions.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/type_traits.h
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/functional
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/future
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/initializer_list
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iosfwd
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iterator
@@ -271,6 +281,7 @@ C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-rein
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/list
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/map
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/memory
+ mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/mutex
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/new
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/numeric
  mdp:C:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/optional

@@ -11,46 +11,41 @@ World::World(Humanity* _humanity, Graveyard* _graveyard){
     length = humanity->length;
 }
 
-TreeNode* World::buildBalancedTree(const QVector<Person*>& personList, int start, int end) {
+TreeNode* World::buildBalancedTree(const QVector<Person*>& selectedPersons, int start, int end) {
     if (start > end) {
         return nullptr;
     }
 
-    // Encuentra el elemento del medio para balancear el árbol
     int mid = start + (end - start) / 2;
-    TreeNode* node = new TreeNode(personList[mid]);
+    TreeNode* node = new TreeNode(selectedPersons[mid]);
 
-    // Construye recursivamente los subárboles izquierdo y derecho
-    node->left = buildBalancedTree(personList, start, mid - 1);
-    node->right = buildBalancedTree(personList, mid + 1, end);
+    node->left = buildBalancedTree(selectedPersons, start, mid - 1);
+    node->right = buildBalancedTree(selectedPersons, mid + 1, end);
 
     return node;
 }
 
 TreeNode* World::generate() {
-    int totalPersons = length;  // Asumiendo que 'length' representa la cantidad total en 'humanity'
-    int nodesToSelect = std::max(1, totalPersons / 100);  // 1% de la humanidad o al menos 1 nodo
+    int totalPersons = length;
+    int nodesToSelect = std::max(1, totalPersons / 100);
 
-    // Convierte la lista ordenada `humanity` en un QVector de nodos seleccionados
     QVector<Person*> selectedPersons;
     Person* current = humanity->firstPerson;
-    int step = totalPersons / nodesToSelect;  // Salto entre personas para obtener una muestra del 1%
+    int step = totalPersons / nodesToSelect;
 
     for (int i = 0; i < nodesToSelect && current != nullptr; ++i) {
         selectedPersons.append(current);
 
-        // Avanza `step` personas en la lista
         for (int j = 0; j < step && current != nullptr; ++j) {
             current = current->rightPerson;
         }
     }
 
-    // Construye el árbol balanceado a partir del vector seleccionado
     return buildBalancedTree(selectedPersons, 0, selectedPersons.size() - 1);
 }
 
 
-Person* World::search(int id) { //idealmente el buscado pero sino el mas cercano
+Person* World::search(int id) {
 
     TreeNode* root = generate();
     TreeNode* currentNode = root;
@@ -82,17 +77,13 @@ Person* World::search(int id) { //idealmente el buscado pero sino el mas cercano
 void World::add(Person* person) {
     Person* p = search(person->id);
 
-
-    // Si `p` es nullptr, significa que el árbol está vacío o que el nodo no se pudo encontrar.
-    // En este caso, deberíamos insertar `person` en la raíz.
     if (p == nullptr) {
         qDebug()<< "null";
-        humanity->add(person, nullptr, 0);  // Aquí `nullptr` significa que es la raíz
+        humanity->add(person, nullptr, 0);
 
         return;
     }
     qDebug()<< p->firstName;
-    // Calcula la dirección dependiendo de la comparación entre `person->id` y `p->id`
     bool dir = (person->id > p->id) ? 1 : 0;
 
     humanity->add(person, p, dir);
@@ -107,7 +98,8 @@ Person* World::remove(int id){
 
     bool dir = (id > p->id) ? 1 : 0;
     if(p->id == id){
-        removed = humanity->remove(id,p,dir);}
+        removed = humanity->remove(id,p,dir);
+    }
 
 
     return removed;

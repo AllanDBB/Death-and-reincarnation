@@ -1,0 +1,27 @@
+Maha	Chamorro	16021	Grecia	Wicca	Sociólogo	2024-11-12 21:18:03 resucitó como: Andrea	Delmoral	16021	Marruecos	Druzo	Filólogo	2024-11-12 21:18:03
+Mustapha	Ramirez	66768	Libia	Espiritismo	Médico	2024-11-12 21:18:03 resucitó como: Angela	Catalan	66768	Arabia Saudita	Espiritismo	Redactor	2024-11-12 21:18:03
+Evgeniy	Esteban	94888	Filipinas	Jainismo	Pianista	2024-11-12 21:18:03 resucitó como: Luisa	Guevara	94888	Irán	Scientology	Soldador	2024-11-12 21:18:03
+Vanessa	Samper	102054	Arabia Saudita	Raelismo	Historiador del arte	2024-11-12 21:18:03 resucitó como: Prakash	Portillo	102054	Filipinas	Cristianismo	Filólogo	2024-11-12 21:18:03
+Liliana	Enriquez	102675	Líbano	Islam	Sommelier	2024-11-12 21:18:03 resucitó como: Ahmad	Delatorre	102675	Laos	Druzo	Soldador	2024-11-12 21:18:03
+Alexander	Lorenzo	130189	Islas Marshall	Wicca	Traductor	2024-11-12 21:18:03 resucitó como: Weihua	Segovia	130189	Bulgaria	Neopaganismo	Decorador	2024-11-12 21:18:03
+Sayed	Zaragoza	141402	Australia	Hinduismo	Médico	2024-11-12 21:18:03 resucitó como: Jianping	Galiano	141402	Italia	Budismo	Electricista	2024-11-12 21:18:03
+Valentina	Ca Adas	151082	Lituania	Raelismo	Físico	2024-11-12 21:18:03 resucitó como: Moussa	Aviles	151082	Croacia	Confucianismo	Musicólogo	2024-11-12 21:18:03
+Christophe	Vergara	159767	Irak	Raelismo	Sommelier	2024-11-12 21:18:03 resucitó como: Urmila	Macias	159767	Chile	Judaísmo	Camarero	2024-11-12 21:18:03
+Therese	Caparros	202726	Libia	Hinduismo	Desarrollador web	2024-11-12 21:18:03 resucitó como: Ganga	Lafuente	202726	Laos	Budismo	Traumatólogo	2024-11-12 21:18:03
+Laksmi	Ferrer	238448	Lituania	Confucianismo	Productor de cine	2024-11-12 21:18:03 resucitó como: Sachiko	Narvaez	238448	Jordania	Islam sufí	Terapeuta	2024-11-12 21:18:03
+Joanna	Dedios	244720	Cuba	Agnosticismo	Veterinario	2024-11-12 21:18:03 resucitó como: Dora	Castilla	244720	Costa Rica	Budismo	Politólogo	2024-11-12 21:18:03
+Rene	Peral	268028	Malawi	Confucianismo	Estadístico	2024-11-12 21:18:03 resucitó como: Heather	Sepulveda	268028	Japón	Scientology	Ingeniero	2024-11-12 21:18:03
+Michel	Osuna	307676	Lituania	Judaísmo	Director de cine	2024-11-12 21:18:03 resucitó como: Gary	Camara	307676	Burundi	Cristianismo	Intérprete	2024-11-12 21:18:03
+Yanhua	Pe Alver	319641	Liberia	Cristianismo	Químico	2024-11-12 21:18:03 resucitó como: Anwar	Campoy	319641	Cabo Verde	Espiritismo	Enfermero	2024-11-12 21:18:03
+Nykolai	Reyes	329583	Estonia	Budismo	Narrador	2024-11-12 21:18:03 resucitó como: Ken	Francisco	329583	Hungría	Jainismo	Camarero	2024-11-12 21:18:03
+Sharmin	Gisbert	350342	Letonia	Raelismo	Director de cine	2024-11-12 21:18:03 resucitó como: Asha	Iglesias	350342	Georgia	Neopaganismo	Veterinario	2024-11-12 21:18:03
+Joyce	Carvajal	355263	Ecuador	Islam	Publicista	2024-11-12 21:18:03 resucitó como: Saroj	Hinojosa	355263	Luxemburgo	Cristianismo	Científico	2024-11-12 21:18:03
+Saeed	Alcalde	411054	Mauricio	Bahá'í	Estadístico	2024-11-12 21:18:03 resucitó como: Said	Gimenez	411054	Chipre	Jainismo	Científico	2024-11-12 21:18:03
+Zhijian	Vi As	568897	Camerún	Confucianismo	Agrónomo	2024-11-12 21:18:03 resucitó como: Narayan	Quesada	568897	El Salvador	Cristianismo	Historiador del arte	2024-11-12 21:18:03
+Guillermo	Belda	696584	Argelia	Ateísmo	Técnico en informática	2024-11-12 21:18:03 resucitó como: Scott	Campoy	696584	Bahrein	Confucianismo	Publicista	2024-11-12 21:18:03
+Nabil	Fari A	709283	Croacia	Neopaganismo	Agrónomo	2024-11-12 21:18:03 resucitó como: Kathy	Portillo	709283	Antigua y Barbuda	Sijismo	Psicólogo	2024-11-12 21:18:03
+Faisal	Pina	794958	Arabia Saudita	Zoroastrismo	Astrónomo	2024-11-12 21:18:03 resucitó como: Helena	Medrano	794958	El Salvador	Espiritismo	Pintor	2024-11-12 21:18:03
+Liying	Calderon	829502	Argentina	Confucianismo	Radiólogo	2024-11-12 21:18:03 resucitó como: Rachel	Sans	829502	Gambia	Confucianismo	Sommelier	2024-11-12 21:18:03
+Khadija	Catalan	855207	Alemania	Agnosticismo	Ilustrador	2024-11-12 21:18:03 resucitó como: Lyudmyla	Rosado	855207	Corea del Norte	Judaísmo	Nutricionista	2024-11-12 21:18:03
+Melanie	Villanueva	856658	Bosnia y Herzegovina	Judaísmo	Químico	2024-11-12 21:18:03 resucitó como: Hussein	Figueras	856658	Belice	Raelismo	Terapeuta ocupacional	2024-11-12 21:18:03
+Peng	Carmona	863500	Honduras	Sijismo	Productor musical	2024-11-12 21:18:03 resucitó como: Rashid	Nicolas	863500	Malta	Zoroastrismo	Redactor	2024-11-12 21:18:03

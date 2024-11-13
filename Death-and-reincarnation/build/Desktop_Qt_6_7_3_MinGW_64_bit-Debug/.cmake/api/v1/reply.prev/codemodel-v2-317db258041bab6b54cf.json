@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-19b9857e320dd0bb6753.json",
+					"jsonFile" : "directory-.-Debug-45f4171c95012cf43b9a.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Death-and-reincarnation::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Death-and-reincarnation-Debug-c7f8c32031c061a9212b.json",
+					"jsonFile" : "target-Death-and-reincarnation-Debug-e24f7ff33b94689ea072.json",
 					"name" : "Death-and-reincarnation",
 					"projectIndex" : 0
 				},

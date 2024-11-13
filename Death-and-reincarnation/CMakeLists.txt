@@ -55,7 +55,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         src/cpp/graveyard.cpp
         src/cpp/angel.cpp
         src/cpp/heaven.cpp
-        main.cpp
+
         src/angelNames
         src/names
         src/lastNames

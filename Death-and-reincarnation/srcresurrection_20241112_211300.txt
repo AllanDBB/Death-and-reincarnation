@@ -1,0 +1,27 @@
+Florence	Macia	105	Alemania		Contador	2024-11-12 21:08:48 resucitó como: Gladys	Parrilla	105	Bielorrusia	Wicca	Dentista	2024-11-12 21:13:00
+Xiaodong	Esteve	219	Alemania		Dentista	2024-11-12 21:08:55 resucitó como: Jyoti	Alegre	219	Dominica	Sijismo	Taxista	2024-11-12 21:13:00
+Kiran	Pinilla	231	Alemania		Arquitecto	2024-11-12 21:08:52 resucitó como: Yusuf	Chacon	231	Belice	Neopaganismo	Contador	2024-11-12 21:13:00
+Gerhard	Corrales	581	Afganistán		Abogado	2024-11-12 21:08:54 resucitó como: Suman	Egea	581	Irak	Scientology	Filólogo	2024-11-12 21:13:00
+Mercedes	Estrada	627	Andorra		Abogado	2024-11-12 21:08:53 resucitó como: Tony	Ruiz	627	Maldivas	Budismo	Radiólogo	2024-11-12 21:13:00
+Dilip	Cano	652	Angola		Abogado	2024-11-12 21:08:47 resucitó como: Norma	Iglesias	652	Chipre	Taoísmo	Logopeda	2024-11-12 21:13:00
+Mustapha	Badia	3207	Angola	Islam sufí	Científico	2024-11-12 21:08:47 resucitó como: Erika	Giraldo	3207	Belice	Druzo	Mecánico	2024-11-12 21:13:00
+Gang	Camacho	4175	Andorra	Agnosticismo	Chef	2024-11-12 21:08:50 resucitó como: Mukesh	Ochoa	4175	Kiribati	Agnosticismo	Taxista	2024-11-12 21:13:00
+Dongmei	Vivas	4509	Angola		Biólogo	2024-11-12 21:08:52 resucitó como: Lina	Batista	4509	Guatemala	Confucianismo	Dentista	2024-11-12 21:13:00
+Marta	Aguilar	5610	Andorra		Artista	2024-11-12 21:08:50 resucitó como: Pa	Casares	5610	Benín	Raelismo	Comerciante	2024-11-12 21:13:00
+Hung	Lago	5796	Angola		Dentista	2024-11-12 21:08:51 resucitó como: Frank	Vallejo	5796	Gambia	Ateísmo	Veterinario	2024-11-12 21:13:00
+Ravindra	Segui	6151	Afganistán	Agnosticismo	Arquitecto	2024-11-12 21:08:54 resucitó como: Timothy	Salazar	6151	Islandia	Jainismo	Podólogo	2024-11-12 21:13:00
+Sri	Quintero	6544	Angola		Arquitecto	2024-11-12 21:08:50 resucitó como: Sima	Chavez	6544	Bulgaria	Espiritismo	Youtuber	2024-11-12 21:13:00
+Cristina	Villalba	8202	Albania	Sijismo	Astrónomo	2024-11-12 21:08:50 resucitó como: Alberto	Benavides	8202	Irán	Espiritismo	Politólogo	2024-11-12 21:13:00
+Nirmala	Abreu	8243	Alemania		Arquitecto	2024-11-12 21:08:55 resucitó como: Amadou	Valenzuela	8243	Lesoto	Islam	Operador de maquinaria	2024-11-12 21:13:00
+Sunday	Avila	8554	Albania	Sijismo	Científico	2024-11-12 21:08:54 resucitó como: Gerhard	Pareja	8554	Botsuana	Taoísmo	Agrónomo	2024-11-12 21:13:00
+Marie	Ortu O	8929	Afganistán	Islam	Arquitecto	2024-11-12 21:08:49 resucitó como: Zhenhua	Arana	8929	India	Raelismo	Técnico en informática	2024-11-12 21:13:00
+Gladys	Llopis	9258	Andorra		Arquitecto	2024-11-12 21:08:54 resucitó como: Jacqueline	Ruiz	9258	Andorra	Taoísmo	Terapeuta	2024-11-12 21:13:00
+Han	Saavedra	10051	Andorra	Bahá'í	Científico	2024-11-12 21:08:48 resucitó como: Maya	Barrero	10051	Arabia Saudita	Ateísmo	Soldador	2024-11-12 21:13:00
+Ran	Aragon	10195	Andorra		Chef	2024-11-12 21:08:56 resucitó como: Kelly	Sola	10195	Egipto	Bahá'í	Taxista	2024-11-12 21:13:00
+Linh	Lloret	10544	Afganistán		Chef	2024-11-12 21:08:52 resucitó como: Lucia	Estrada	10544	Benín	Islam	Guía turístico	2024-11-12 21:13:00
+Salvador	Soto	10935	Alemania		Dentista	2024-11-12 21:08:48 resucitó como: Aya	Ortiz	10935	Burkina Faso	Druzo	Científico	2024-11-12 21:13:00
+Irina	Cebrian	11207	Alemania		Carpintero	2024-11-12 21:08:49 resucitó como: Alain	Cardona	11207	Azerbaiyán	Taoísmo	Relacionista público	2024-11-12 21:13:00
+Dina	Ruiz	11469	Albania	Jainismo	Contador	2024-11-12 21:08:57 resucitó como: Bernard	Marmol	11469	Congo	Confucianismo	Estilista	2024-11-12 21:13:00
+Vladimir	Uriarte	11473	Afganistán		Artista	2024-11-12 21:08:51 resucitó como: Ruth	Roldan	11473	Bangladés	Islam	Sastre	2024-11-12 21:13:00
+Ha	Ledesma	11891	Angola		Arquitecto	2024-11-12 21:08:49 resucitó como: Oksana	Carpio	11891	Canadá	Agnosticismo	Nutricionista	2024-11-12 21:13:00
+Kseniya	Castro	11948	Alemania	Ateísmo	Contador	2024-11-12 21:08:48 resucitó como: Cristina	Carrera	11948	Bélgica	Islam	Economista	2024-11-12 21:13:00

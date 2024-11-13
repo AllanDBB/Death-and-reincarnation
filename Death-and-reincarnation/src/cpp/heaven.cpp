@@ -14,7 +14,7 @@ void generateResurrectionFile(const QString& content) {
     // Generar nombre de archivo con la fecha y hora actuales
     QString fileName = "resurrection_" + QDateTime::currentDateTime().toString("yyyyMMdd_HHmmss") + ".txt";
 
-    QFile file("C:/Users/natal/Desktop/u" + fileName);
+    QFile file("C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src" + fileName);
 
     // Intentar abrir el archivo en modo escritura
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -103,39 +103,56 @@ Heaven::Heaven(Graveyard* _graveyard, World* _world, Humanity* _humanity) {
 
     backTozero();
 }
-
 void Heaven::generateLevel() {
     QString forFile;
     QVector<Angel*> leaves;
-    getLeaves(root, leaves);
-    for (Angel * a: leaves){
-        QString randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
-        int vers = getVersion(randomLine);
-        a->firstChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-        forFile.append(graveyard->firstPerson->toString()+" resucitó como: ");
-        QString temp = reincarnatePerson();
-        forFile.append(temp);
-        forFile.append("\n");
 
-
-        randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
-        vers = getVersion(randomLine);
-        a->secondChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-        forFile.append(graveyard->firstPerson->toString()+" resucitó como: ");
-        temp = reincarnatePerson();
-        forFile.append(temp);
-        forFile.append("\n");
-
-        randomLine = readRandomLine_("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
-        vers = getVersion(randomLine);
-        a->thirdChild = new Angel(randomLine, vers, generation, graveyard->firstPerson);
-        forFile.append(graveyard->firstPerson->toString()+" resucitó como: ");
-        temp = reincarnatePerson();
-        forFile.append(temp);
-        forFile.append("\n");
+    // Verifica que la raíz exista
+    if (!root) {
+        qWarning() << "Error: No se puede generar niveles porque el árbol no tiene raíz.";
+        return;
     }
+
+    getLeaves(root, leaves);
+
+    // Recorre los ángeles en el nivel actual y genera 3 hijos para cada uno
+    for (Angel* a : leaves) {
+        if (!graveyard->firstPerson) {
+            qWarning() << "Error: No se puede asignar resurrección ya que `firstPerson` es nulo.";
+            continue;  // Salta este ciclo si `firstPerson` es nulo
+        }
+
+        // Generación de los tres hijos del ángel actual
+        for (int i = 0; i < 3; ++i) {
+            QString randomLine = readRandomLine_("C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/angelNames", 10);
+            if (randomLine.isEmpty()) {
+                qWarning() << "Error: Línea vacía al leer nombres de ángeles.";
+                continue;  // Salta este ciclo si la línea está vacía
+            }
+
+            // Obtiene la versión y genera el hijo
+            int vers = getVersion(randomLine);
+            Angel* childAngel = new Angel(randomLine, vers, generation, graveyard->firstPerson);
+
+            // Asigna el hijo correspondiente
+            if (i == 0) {
+                a->firstChild = childAngel;
+            } else if (i == 1) {
+                a->secondChild = childAngel;
+            } else {
+                a->thirdChild = childAngel;
+            }
+
+            // Añade la información de resurrección a `forFile`
+            forFile.append(graveyard->firstPerson->toString() + " resucitó como: ");
+            QString temp = reincarnatePerson();
+            forFile.append(temp + "\n");
+        }
+    }
+
+    // Guarda la información de resurrección en un archivo
     generateResurrectionFile(forFile);
-    generation++;
+    generation++;  // Aumenta la generación para el siguiente nivel
 }
 
 

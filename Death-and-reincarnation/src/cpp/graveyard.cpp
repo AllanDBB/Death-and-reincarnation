@@ -41,12 +41,12 @@ void clearFile(const QString& filename) {
 }
 
 void Graveyard::restoreLog(){
-    clearFile("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/deathLog");
+    clearFile("C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/deathLog");
 
     Person * person = firstPerson;
 
     while (person!=nullptr){
-        writeToFile("C:/Users/natal/Desktop/sage/Death-and-reincarnation/Death-and-reincarnation/src/deathLog", (QString::number(humanity->deaths) +"\t"+ person->timeOfDeath +"\t"+ person->typeOfDeath +"\t"+ person->toString()));
+        writeToFile("C:/Users/adbyb/OneDrive/Documentos/GitHub/Death-and-reincarnation/Death-and-reincarnation/src/deathLog", (QString::number(humanity->deaths) +"\t"+ person->timeOfDeath +"\t"+ person->typeOfDeath +"\t"+ person->toString()));
         person=person->rightPerson;
     }
 }
